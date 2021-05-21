@@ -44,27 +44,9 @@ from batchviewer import view_batch  # aus Git runtergeladen
 # reading in dicom files
 import pydicom  # DICOM Images (.dicom)
 
-# skimage image processing packages
-from skimage import measure, morphology
-from skimage.morphology import ball, binary_closing
-from skimage.measure import label, regionprops
 
-# scipy linear algebra functions 
-from scipy.linalg import norm
-import scipy.ndimage
-
-# plotly 3D interactive graphs 
-import plotly  # conda install -c plotly plotly=4.12.0
-from plotly.graph_objs import *
-import chart_studio.plotly as py
-
-
-# set plotly credentials here
-# this allows you to send results to your account 
-# plotly.tools.set_credentials_file(username=your_username, api_key=your_key)
-
-# -------------------Load Image------------------------------
-def load_scan(path):  # DICOM Bild einlesen
+# -------------------Load DICOM Image------------------------------
+def load_scan(path):
     slices = [pydicom.dcmread(path + '/' + s) for s in
               os.listdir(path)]
     slices = [s for s in slices if 'SliceLocation' in s]
@@ -80,7 +62,7 @@ def load_scan(path):  # DICOM Bild einlesen
         s.SliceThickness = slice_thickness
     return slices
 
-
+# ------------------- DICOM Image to Numpy Array (+Houndfield) ------------------------------
 def get_pixels_hu(scans):  # DICOM to Pixel
 
     image = np.stack([s.pixel_array for s in scans])
@@ -100,16 +82,33 @@ def get_pixels_hu(scans):  # DICOM to Pixel
     image += np.int16(intercept)
     return np.array(image, dtype=np.int16)
 
+# ------------------- Scale pixel intensity --------------------------------------------
+# https://gist.github.com/lebedov/e81bd36f66ea1ab60a1ce890b07a6229
+# abdomen: {'wl': 60, 'ww': 400} || angio: {'wl': 300, 'ww': 600} || bone: {'wl': 300, 'ww': 1500} || brain: {'wl': 40, 'ww': 80} || chest: {'wl': 40, 'ww': 400} || lungs: {'wl': -400, 'ww': 1500}
+def win_scale(data, wl, ww, dtype, out_range):
 
-# extract DICOM pixels for each slice location
+    data_new = np.empty(data.shape, dtype=np.double)
+    data_new.fill(out_range[1] - 1)
+
+    data_new[data <= (wl - ww / 2.0)] = out_range[0]
+    data_new[(data > (wl - ww / 2.0)) & (data <= (wl + ww / 2.0))] = \
+        ((data[(data > (wl - ww / 2.0)) & (data <= (wl + ww / 2.0))] - (wl - 0.5)) / (ww - 1.0) + 0.5) * (
+                    out_range[1] - out_range[0]) + out_range[0]
+    data_new[data > (wl + ww / 2.0)] = out_range[1] - 1
+
+    return data_new.astype(dtype)
+
+
+# ------------- Path --------------------------------------------------------------
 path = '/home/wolfda/Clinic_Data/Data/Covid_Concern/Covid_CT_Kloth/0000100850/3990756/3'  # Path von einem DICOM Bild (ein Ordner mit 88 DICOM Dateien)
 
-
-# path = 'C:\Dixon_example_dicom'
+# -------------- Start ------------------------------------------------------------------
 patient_dicom = load_scan(path)
 patient_pixels = get_pixels_hu(patient_dicom)  # bekommen Numpy Array
+patient_pixels = win_scale(patient_pixels, -400, 1500, np.int16, [patient_pixels.min(), patient_pixels.max()]) # Bekommt Numpy Array Korrigiert [TODO: wl und ww anpassen!]
+# abdomen: {'wl': 60, 'ww': 400} || angio: {'wl': 300, 'ww': 600} || bone: {'wl': 300, 'ww': 1500} || brain: {'wl': 40, 'ww': 80} || chest: {'wl': 40, 'ww': 400} || lungs: {'wl': -400, 'ww': 1500}
 
-# ----Visualization-------------------------------------------------
+# ----Visualization--------------------------------------------------------------------
 # display a single slice
 print(patient_dicom)
 plt.imshow(patient_pixels[5], cmap=plt.cm.bone)  # [5] ist die Schischt die angezeit wird
@@ -117,9 +116,12 @@ plt.imshow(patient_pixels[5], cmap=plt.cm.bone)  # [5] ist die Schischt die ange
 # display interactive
 patient_pixels = np.transpose(patient_pixels, (0, 2, 1))
 print(patient_pixels.shape)
-view_batch(patient_pixels, width=384, height=312)
+view_batch(patient_pixels, width=512, height=512)
+
+#"""
 
 
+"""
 #----save---------------------------------------------------------
 def save(args, mask, name, i, image):
     save_folder = args
