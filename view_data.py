@@ -8,24 +8,36 @@ from math import *
 import matplotlib.pyplot as plt
 from functools import reduce
 
+
 # =============================================================================
 # NIFTI Image:
 # =============================================================================
 r"""import nibabel as nib #NIFTI Images (.nii)
 from batchviewer import view_batch # aus Git runtergeladen
-file_path = "/home/wolfda/data/MUSTERMANN,MAXIMILAN_1000003010000030_1_59/RoiVolume/R1.uint16.nii.gz" #r"C:\Users\sup.alexisa\Downloads\Task02_Heart\Task02_Heart\imagesTr\la_005.nii.gz"
+
+file_path = "/home/wolfda/Clinic_Data/Challenge/Challenge_COVID-19-20_v2/Train/volume-covid19-A-0003_ct.nii.gz" #r"C:\Users\sup.alexisa\Downloads\Task02_Heart\Task02_Heart\imagesTr\la_005.nii.gz"
 img = nib.load(file_path)
 print(img.shape)
 print(img.header)
 img = img.get_fdata()
 img = img.transpose(2, 0, 1)
 print(img.shape)
-view_batch(img, width=1000, height=1000)
+
+file_path2 = "/home/wolfda/Clinic_Data/Challenge/Challenge_COVID-19-20_v2/Train/volume-covid19-A-0003_seg.nii.gz" #r"C:\Users\sup.alexisa\Downloads\Task02_Heart\Task02_Heart\imagesTr\la_005.nii.gz"
+img2 = nib.load(file_path2)
+print(img2.shape)
+print(img2.header)
+img2 = img2.get_fdata()
+img2 = img2.transpose(2, 0, 1)
+print(img.shape)
+
+view_batch(img, img2, width=512, height=512)
 """
 
 # =============================================================================
 # DICOM Image Mögl1: (Ein Bild bestehend aus mehreren Schichten + Tolle Visualisiereung + Speicherung)
 # =============================================================================
+
 # ----------packages------------------------------
 from batchviewer import view_batch  # aus Git runtergeladen
 
@@ -90,7 +102,9 @@ def get_pixels_hu(scans):  # DICOM to Pixel
 
 
 # extract DICOM pixels for each slice location
-path = '/media/wolfda/diskAshur2/0008284111_pet_corrected/3783923/3'  # Path von einem DICOM Bild (ein Ordner mit 88 DICOM Dateien)
+path = '/home/wolfda/Clinic_Data/Data/Covid_Concern/Covid_CT_Kloth/0000100850/3990756/3'  # Path von einem DICOM Bild (ein Ordner mit 88 DICOM Dateien)
+
+
 # path = 'C:\Dixon_example_dicom'
 patient_dicom = load_scan(path)
 patient_pixels = get_pixels_hu(patient_dicom)  # bekommen Numpy Array
@@ -105,7 +119,7 @@ patient_pixels = np.transpose(patient_pixels, (0, 2, 1))
 print(patient_pixels.shape)
 view_batch(patient_pixels, width=384, height=312)
 
-"""
+
 #----save---------------------------------------------------------
 def save(args, mask, name, i, image):
     save_folder = args
@@ -141,20 +155,23 @@ print(data)
 # =============================================================================
 # DICOM Image Mögl2: (nur eine Schicht von einem Bild)
 # =============================================================================
-"""import pydicom as dicom  # DICOM Images (.dicom)
+import pydicom as dicom  # DICOM Images (.dicom)
 
 # Nur ein Bild der Serie einlesen:
 # dataset = dicom.read_file('C:\\DICOM_Test_Bild\\Bilder1\\FB_umap_4States_Acc0.4_F_112\\1.2.840.113654.2.70.1.102853707388696908138401463515242578675.dcm') # an Name .dcm anhängen UND \\ statt \
-dataset = dicom.read_file("/home/wolfda/PPA_output_20201202171019/Mustermann_Maximilan/59_Abd_ep2d_diff_b50_800_tra_ADC_DFC_MIX/00000035.dcm")
+#dataset = dicom.read_file("/media/wolfda/diskAshur2/Prostata_Mamma/0008165361/4026210/55/000001_1.2.40.0.13.1.14007071406203362040487677299688814006.dcm")
+#dataset = dicom.read_file("/media/wolfda/diskAshur2/Prostata_Mamma/0008165361/4026210/57/000001_1.2.40.0.13.1.116072735095774797152787949233774118018.dcm")
 
+dataset = dicom.read_file("/home/wolfda/Clinic_Data/Data/Covid_Concern/Covid_CT_Kloth/0008316426/4006765/3/000001_1.3.12.2.1107.5.1.4.122102.30000020110606373296100036493.dcm")
+#dataset = dicom.read_file("/home/wolfda/Clinic_Data/Test/Prostata_Mamma/0008165361/4026210/57/000001_1.2.40.0.13.1.116072735095774797152787949233774118018.dcm")
+
+#print(dataset)
 print(dataset)
-print(dataset.pixel_array.shape)
-print(dataset.Rows)
-print(dataset.Columns)
+
 
 plt.imshow(dataset.pixel_array, plt.cm.bone)
 plt.show()
-"""
+
 # =============================================================================
 # DICOM Image Mögl3: (Ein Bild bestehend aus mehreren Schichten + Pixel reduzierung)
 # =============================================================================
