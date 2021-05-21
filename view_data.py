@@ -82,7 +82,7 @@ def get_pixels_hu(scans):  # DICOM to Pixel
     image += np.int16(intercept)
     return np.array(image, dtype=np.int16)
 
-# ------------------- Scale pixel intensity --------------------------------------------
+# ------------------- Scale pixel intensity (Nu bei CT Bildern) --------------------------------------------
 # https://gist.github.com/lebedov/e81bd36f66ea1ab60a1ce890b07a6229
 # abdomen: {'wl': 60, 'ww': 400} || angio: {'wl': 300, 'ww': 600} || bone: {'wl': 300, 'ww': 1500} || brain: {'wl': 40, 'ww': 80} || chest: {'wl': 40, 'ww': 400} || lungs: {'wl': -400, 'ww': 1500}
 def win_scale(data, wl, ww, dtype, out_range):
@@ -105,6 +105,8 @@ path = '/home/wolfda/Clinic_Data/Data/Covid_Concern/Covid_CT_Kloth/0000100850/39
 # -------------- Start ------------------------------------------------------------------
 patient_dicom = load_scan(path)
 patient_pixels = get_pixels_hu(patient_dicom)  # bekommen Numpy Array
+
+#Nur bei CT Bildern machen:
 patient_pixels = win_scale(patient_pixels, -400, 1500, np.int16, [patient_pixels.min(), patient_pixels.max()]) # Bekommt Numpy Array Korrigiert [TODO: wl und ww anpassen!]
 # abdomen: {'wl': 60, 'ww': 400} || angio: {'wl': 300, 'ww': 600} || bone: {'wl': 300, 'ww': 1500} || brain: {'wl': 40, 'ww': 80} || chest: {'wl': 40, 'ww': 400} || lungs: {'wl': -400, 'ww': 1500}
 
