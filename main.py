@@ -1,3 +1,6 @@
+# Batchviwer aus Git Herunterladen: https://github.com/FabianIsensee/BatchViewer
+# Im Bild scrollen: nur jede zweite Schicht | Neben Bild scrollen: jede Schicht
+
 from dicom_view_BatchViewer import run_ct
 from dicom_view_BatchViewer import run_mrt
 from nifti_view_BatchViewer import nifti_mrt
