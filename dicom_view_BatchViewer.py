@@ -101,15 +101,15 @@ def run_ct (path, body_part):
 
 
     patient_dicom = load_scan(path)
-    patient_pixels = get_pixels_hu(patient_dicom)  # bekommen Numpy Array
-    patient_pixels = win_scale(patient_pixels, wl, ww, type(patient_pixels), [patient_pixels.min(), patient_pixels.max()])  # Bekommt Numpy Array Korrigiert
+    patient_pixels = get_pixels_hu(patient_dicom)  # Numpy Array (Anzahl Schichten, x,y)
+    patient_pixels = win_scale(patient_pixels, wl, ww, type(patient_pixels), [patient_pixels.min(), patient_pixels.max()])  # Numpy Array Korrigiert
     visualisierung(patient_dicom, patient_pixels)
 
 
 def run_mrt (path):
 
     patient_dicom = load_scan(path)
-    patient_pixels = get_pixels_hu(patient_dicom)  # bekommen Numpy Array
+    patient_pixels = get_pixels_hu(patient_dicom)  # Numpy Array (Anzahl Schichten, x,y)
     visualisierung(patient_dicom, patient_pixels)
 
 

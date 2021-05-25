@@ -3,33 +3,54 @@
 
 from dicom_view_BatchViewer import run_ct
 from dicom_view_BatchViewer import run_mrt
+
 from nifti_view_BatchViewer import nifti_mrt
+from nifti_view_BatchViewer import nifti_mrt_mask
 from nifti_view_BatchViewer import nifti_ct
+from nifti_view_BatchViewer import nifti_ct_mask
+
 from dicom_header import header
 
 def main():
+    # Eine der blauen Zeilen einkommentieren (jenachdem was man ausgeben will)
 
-    ########################################## BatchViewer ###########################################################
+    ########################################## BatchViewer DICOM ######################################################
 
     # ----------------------------- DICOM CT BatchViwer ------------------------------------------------
-    # abdomen, angio, bon, brain, chest, lungs
-    #run_ct('/home/wolfda/Clinic_Data/Data/Covid_Concern/Covid_CT_Kloth/0000100850/3990756/3', "lungs")
+    # (CT_Pfad, Körperteil)
+    # Körperteil: abdomen, angio, bon, brain, chest, lungs
+    # Todo: run_ct('/home/wolfda/Clinic_Data/Data/Covid_Concern/Covid_CT_Kloth/0000100850/3990756/3', "lungs")
 
     # ----------------------------- DICOM MRT BatchViwer ------------------------------------------------
-    #run_mrt('/home/wolfda/Clinic_Data/Test/Prostata_Mamma/0008046191/3865644/6')
+    # Todo: run_mrt('/home/wolfda/Clinic_Data/Test/Prostata_Mamma/0008046191/3865644/6')
 
-    # ----------------------------- Nifti CT BatchViwer ------------------------------------------------
-    # abdomen, angio, bon, brain, chest, lungs
-    #nifti_ct("/home/wolfda/Clinic_Data/Challenge/Challenge_COVID-19-20_v2/Train/volume-covid19-A-0003_ct.nii.gz", "lungs")
+
+
+    ########################################## BatchViewer Nifti ######################################################
+
+    # ----------------------------- Nifti CT BatchViwer------------------------------------------------
+    # (CT_Pfad, Körperteil)
+    # Körperteil: abdomen, angio, bon, brain, chest, lungs
+    # Todo: nifti_ct("/home/wolfda/Clinic_Data/Challenge/Challenge_COVID-19-20_v2/Train/volume-covid19-A-0003_ct.nii.gz", "lungs")
+
+    # ----------------------------- Nifti CT BatchViwer + Maske------------------------------------------------
+    # (CT_Pfad, Körperteil, Maske_Pfad)
+    # Körperteil: abdomen, angio, bon, brain, chest, lungs
+    # Todo: nifti_ct_mask("/home/wolfda/Clinic_Data/Challenge/Challenge_COVID-19-20_v2/Train/volume-covid19-A-0003_ct.nii.gz", "lungs", "/home/wolfda/Clinic_Data/Challenge/Challenge_COVID-19-20_v2/Train/volume-covid19-A-0003_seg.nii.gz")
 
     # ----------------------------- Nifti MRT BatchViwer ------------------------------------------------
-    #nifti_ct("/home/wolfda/Clinic_Data/Challenge/Challenge_COVID-19-20_v2/Train/volume-covid19-A-0003_ct.nii.gz")
+    # Todo: nifti_mrt("/home/wolfda/Clinic_Data/Challenge/Challenge_COVID-19-20_v2/Train/volume-covid19-A-0003_ct.nii.gz")
+
+    # ----------------------------- Nifti MRT BatchViwer + Maske ------------------------------------------------
+    # (MRT_Pfad, Maske_Pfad)
+    # Todo: nifti_mrt_mask("/home/wolfda/Clinic_Data/Challenge/Challenge_COVID-19-20_v2/Train/volume-covid19-A-0003_ct.nii.gz", "/home/wolfda/Clinic_Data/Challenge/Challenge_COVID-19-20_v2/Train/volume-covid19-A-0003_seg.nii.gz")
+
 
 
     ########################################## Header ################################################################
 
     # ----------------------------- DICOM Header ------------------------------------------------
-    header("/home/wolfda/Clinic_Data/Data/Covid_Concern/Covid_CT_Kloth/0000100850/3990756/3/000001_1.3.12.2.1107.5.1.4.122102.30000020100907291877200016274.dcm")
+    # Todo: header("/home/wolfda/Clinic_Data/Data/Covid_Concern/Covid_CT_Kloth/0000100850/3990756/3/000001_1.3.12.2.1107.5.1.4.122102.30000020100907291877200016274.dcm")
 
 
 
