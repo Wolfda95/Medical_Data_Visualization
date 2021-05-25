@@ -21,6 +21,7 @@ def win_scale(data, wl, ww, dtype, out_range):
 
 #######################################################################################################################
 
+# ------------------- Nifti CT BatchViwer --------------------------------------------
 def nifti_ct(path, body_part):
     if body_part == "abdomen":
         wl = 60
@@ -50,13 +51,13 @@ def nifti_ct(path, body_part):
 
     print(nifti.header)
 
-    img = img.transpose(2, 0, 1)
+    img = img.transpose(2, 0, 1) # Anzahl Schichten muss im BatchVwer vorne Stehen (Anzahl Schichten,x,y)
     width = img.shape[1]
     hight = img.shape[2]
     view_batch(img, width=width, height=hight)
 
 
-
+# ------------------- Nifti CT BatchViwer + Maske --------------------------------------------
 def nifti_ct_mask(ct, body_part, mask):
     if body_part == "abdomen":
         wl = 60
@@ -82,22 +83,18 @@ def nifti_ct_mask(ct, body_part, mask):
     nifti_ct = nib.load(ct)
     img_ct = nifti_ct.get_fdata()  # Numpy Array (x,y, Anzahl Schichten)
     img_ct = win_scale(img_ct, wl, ww, type(img_ct), [img_ct.min(), img_ct.max()])  # Numpy Array Korrigiert
-    img_ct = img_ct.transpose(2, 0, 1)
+    img_ct = img_ct.transpose(2, 0, 1) # Anzahl Schichten muss im BatchVwer vorne Stehen (Anzahl Schichten,x,y)
     print(nifti_ct.header)
 
     nifti_mask = nib.load(mask)
     img_mask = nifti_mask.get_fdata()  # Numpy Array (x,y, Anzahl Schichten)
-    img_mask = img_mask.transpose(2, 0, 1)
+    img_mask = img_mask.transpose(2, 0, 1) # Anzahl Schichten muss im BatchVwer vorne Stehen (Anzahl Schichten,x,y)
 
     width = img_ct.shape[1]
     hight = img_ct.shape[2]
     view_batch(img_ct,img_mask, width=width, height=hight)
 
-
-
-
-
-
+# ------------------- Nifti MRT BatchViwer --------------------------------------------
 def nifti_mrt(path):
 
     nifti = nib.load(path)
@@ -106,22 +103,22 @@ def nifti_mrt(path):
     print(nifti.header)
     print(img.shape)
 
-    img = img.transpose(2, 0, 1)
+    img = img.transpose(2, 0, 1) # Anzahl Schichten muss im BatchVwer vorne Stehen (Anzahl Schichten,x,y)
     width = img.shape[1]
     hight = img.shape[2]
     view_batch(img, width=width, height=hight)
 
-
+# ------------------- Nifti MRT BatchViwer + Maske--------------------------------------------
 def nifti_mrt_mask(mrt, mask):
 
     nifti_mrt = nib.load(mrt)
     img_mrt = nifti_mrt.get_fdata() # Numpy Array (x,y, Anzahl Schichten)
-    img_mrt = img_mrt.transpose(2, 0, 1)
+    img_mrt = img_mrt.transpose(2, 0, 1) # Anzahl Schichten muss im BatchVwer vorne Stehen (Anzahl Schichten,x,y)
     print(nifti_mrt.header)
 
     nifti_mask = nib.load(mask)
     img_mask = nifti_mask.get_fdata()  # Numpy Array (x,y, Anzahl Schichten)
-    img_mask = img_mask.transpose(2, 0, 1)
+    img_mask = img_mask.transpose(2, 0, 1) # Anzahl Schichten muss im BatchVwer vorne Stehen (Anzahl Schichten,x,y)
 
     width = img_mrt.shape[1]
     hight = img_mrt.shape[2]
