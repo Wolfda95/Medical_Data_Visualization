@@ -1,5 +1,5 @@
-# Batchviwer aus Git Herunterladen: https://github.com/FabianIsensee/BatchViewer
-# Im Bild scrollen: nur jede zweite Schicht | Neben Bild scrollen: jede Schicht
+# Batchviwer aus Git Herunterladen: https://github.com/FabianIsensee/BatchViewer und Anleitung in Readme durchführen
+# Batchviewer Info: Im Bild scrollen: nur jede zweite Schicht | Neben Bild scrollen: jede Schicht
 
 from dicom_view_BatchViewer import run_ct
 from dicom_view_BatchViewer import run_ct_mask
@@ -10,6 +10,9 @@ from nifti_view_BatchViewer import nifti_mrt
 from nifti_view_BatchViewer import nifti_mrt_mask
 from nifti_view_BatchViewer import nifti_ct
 from nifti_view_BatchViewer import nifti_ct_mask
+
+from pytorch_view_BatchViewer import pytorch
+from pytorch_view_BatchViewer import pytorch_mask
 
 from dicom_header import header
 
@@ -62,7 +65,15 @@ def main():
 
     ########################################## BatchViewer Pytorch Tensor #############################################
 
+    # ----------------------------- Pytorch BatchViwer ------------------------------------------------
+    # (pytorch_path, name)
+    # name: torch.save("vol": image, "id": ...) -> name = "vol"
+    pytorch("/home/wolfda/Clinic_Data/Data/Covid_Concern/Klassen/Beatmung/0000106246_2.pt", "vol")
 
+    # ----------------------------- Pytorch BatchViwer + Maske ------------------------------------------------
+    # (pytorch_path, name_img, name_mask)
+    # name: torch.save("vol": image, "mask": Maske)
+    # Todo: pytorch_mask("/home/wolfda/Clinic_Data/Data/Covid_Concern/Klassen/Beatmung/0000106246_2.pt", "vol", "mask")
 
 
 
