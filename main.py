@@ -2,8 +2,10 @@
 # Batchviewer Info: Im Bild scrollen: nur jede zweite Schicht | Neben Bild scrollen: jede Schicht
 
 from dicom_view_BatchViewer import run_ct
+from dicom_view_BatchViewer import run_ct_resize
 from dicom_view_BatchViewer import run_ct_mask
 from dicom_view_BatchViewer import run_mrt
+from dicom_view_BatchViewer import run_mrt_resize
 from dicom_view_BatchViewer import run_mrt_mask
 
 from nifti_view_BatchViewer import nifti_mrt
@@ -28,6 +30,11 @@ def main():
     # Körperteil: abdomen, angio, bon, brain, chest, lungs
     # Todo: run_ct('/home/wolfda/Clinic_Data/Data/Covid_Concern/Covid_CT_Kloth/0000100850/3990756/3', "lungs")
 
+    # ----------------------------- DICOM CT BatchViwer + Resize to [48,256,256] --------------------------------------
+    # (CT_Pfad, Körperteil)
+    # Körperteil: abdomen, angio, bon, brain, chest, lungs
+    # Todo: run_ct_resize('/home/wolfda/Clinic_Data/Data/Covid_Concern/Covid_CT_Kloth/0000100850/3990756/3', "lungs")
+
     # ----------------------------- DICOM CT BatchViwer + Nifti maske ------------------------------------------------
     # (CT_Pfad, Körperteil, NiftiMaske_Pfad)
     # Körperteil: abdomen, angio, bon, brain, chest, lungs
@@ -35,6 +42,9 @@ def main():
 
     # ----------------------------- DICOM MRT BatchViwer ------------------------------------------------
     # Todo: run_mrt('/home/wolfda/Clinic_Data/Test/Prostata_Mamma/0008046191/3865644/6')
+
+    # ----------------------------- DICOM MRT BatchViwer + resize to [48,256,256] -------------------------------------
+    # Todo: run_mrt_resize('/home/wolfda/Clinic_Data/Test/Prostata_Mamma/0008046191/3865644/6')
 
     # ----------------------------- DICOM MRT BatchViwer + Nifti Maske ------------------------------------------------
     # (CT_Pfad, NiftiMaske_Pfad)
@@ -68,7 +78,8 @@ def main():
     # ----------------------------- Pytorch BatchViwer ------------------------------------------------
     # (pytorch_path, name)
     # name: torch.save("vol": image, "id": ...) -> name = "vol"
-    pytorch("/home/wolfda/Clinic_Data/Data/Covid_Concern/Klassen/Beatmung/0000106246_2.pt", "vol")
+    # Todo: pytorch("/home/wolfda/Clinic_Data/Data/Covid_Concern/Klassen/Beatmung/0000106246_2.pt", "vol")Forschung2021!
+
 
     # ----------------------------- Pytorch BatchViwer + Maske ------------------------------------------------
     # (pytorch_path, name_img, name_mask)

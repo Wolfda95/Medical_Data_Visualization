@@ -37,7 +37,7 @@ view_batch(img, img2, width=512, height=512)
 # =============================================================================
 # DICOM Image Mögl1: (Ein Bild bestehend aus mehreren Schichten + Tolle Visualisiereung + Speicherung)
 # =============================================================================
-
+"""
 # ----------packages------------------------------
 from batchviewer import view_batch  # aus Git runtergeladen
 
@@ -159,6 +159,7 @@ print(data)
 # =============================================================================
 # DICOM Image Mögl2: (nur eine Schicht von einem Bild)
 # =============================================================================
+"""
 import pydicom as dicom  # DICOM Images (.dicom)
 
 # Nur ein Bild der Serie einlesen:
@@ -179,7 +180,7 @@ plt.show()
 # =============================================================================
 # DICOM Image Mögl3: (Ein Bild bestehend aus mehreren Schichten + Pixel reduzierung)
 # =============================================================================
-"""import pydicom as dicom #DICOM Images (.dicom)
+import pydicom as dicom #DICOM Images (.dicom)
 import pandas as pd
 
 path = '/home/wolfda/PPA_output_20201202171019/Mustermann_Maximilan/15_Abd_MRAC_CAIPI_HiRes_opp' #Path von einem DICOM Bild (ein Ordner mit 88 DICOM Dateien)
@@ -203,11 +204,12 @@ for num,each_slice in enumerate(slices[:12]): #durchläuft nue die ersten 12 Sch
     new_img = cv2.resize(np.array(each_slice.pixel_array),(IMG_PX_SIZE,IMG_PX_SIZE)) #(Numpy Array der geändert werden soll, (150,150) neue Pixelgröße)
     y.imshow(new_img,plt.cm.bone)
 plt.show()
-print(new_img.shape)"""
+print(new_img.shape)
 
 # =============================================================================
 # DICOM Image Mögl4: (Mehrere Bilder (=mehrer Patienten) betehend jeweils aus mehrern Schichten + Pixel reduziereung)
 # =============================================================================
+"""
 """import pydicom as dicom #DICOM Images (.dcm)
 import pandas as pd
 import cv2
@@ -278,3 +280,19 @@ for f in test_list:
     img2 = np.asarray(img)
     img3 = Image.fromarray(img2)
     img3.save(outdir + 'testrgb' + f + '.png')"""
+
+
+d = torch.linspace(-1, 1, 2)
+h = torch.linspace(-1, 1, 3)
+w = torch.linspace(-1, 1, 4)
+print(d, h, w)
+meshz, meshy, meshx = torch.meshgrid((d, h, w))
+print(meshz.shape, meshy.shape, meshx.shape)
+print(meshz)
+print(meshy)
+print(meshx)
+
+grid = torch.stack((meshx, meshy, meshz), 3)
+grid = grid.unsqueeze(0)
+print(grid)
+print(grid.shape)
