@@ -87,7 +87,7 @@ def visualisierung(patient_dicom, patient_pixels):
     patient_pixels = np.transpose(patient_pixels, (0, 2, 1))
     width = patient_pixels.shape[1]
     hight = patient_pixels.shape[2]
-    view_batch(patient_pixels, width=width, height=hight)
+    view_batch(patient_pixels, width=512, height=512)
 
 # ------------------- DICOM Header der ersten Schicht + Visualisierung (mit Maske)--------------------------------------------
 def visualisierung_mask(patient_dicom, patient_pixels, img_mask):
@@ -167,7 +167,6 @@ def run_ct_resize (path, body_part):
     # RESIZE:
 
     patient_pixels = patient_pixels.astype(np.float32) # sonst meckert zoom
-    patient_pixels = np.transpose(patient_pixels, (1,2,0))
 
     # MÖGL1: Torch grid (Error)
     # pixel_torch = torch.from_numpy(patient_pixels)
@@ -193,9 +192,8 @@ def run_ct_resize (path, body_part):
     # https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.zoom.html#scipy.ndimage.zoom
     # reflect’, ‘constant’, ‘nearest’, ‘mirror’, ‘wrap’
     # resize = scipy.ndimage.zoom(patient_pixels, (min(1,(48 / patient_pixels.shape[0])), (256/patient_pixels.shape[1]), (256/patient_pixels.shape[2])), mode="constant", grid_mode=True)
-    resize = scipy.ndimage.zoom(patient_pixels, ((256 / patient_pixels.shape[1]), (256 / patient_pixels.shape[2]), min(1, (48 / patient_pixels.shape[0]))),mode="constant", grid_mode=True)
+    resize = scipy.ndimage.zoom(patient_pixels, (1,1,1),mode="grid-constant", grid_mode=True)
 
-    resize = np.transpose(resize, (1, 2, 0))
 
     print(patient_pixels.shape, resize.shape)
     visualisierung(patient_dicom, resize)
