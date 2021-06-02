@@ -191,9 +191,7 @@ def run_ct_resize (path, body_part):
     # MÖGL3: Zoom
     # https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.zoom.html#scipy.ndimage.zoom
     # reflect’, ‘constant’, ‘nearest’, ‘mirror’, ‘wrap’
-    # resize = scipy.ndimage.zoom(patient_pixels, (min(1,(48 / patient_pixels.shape[0])), (256/patient_pixels.shape[1]), (256/patient_pixels.shape[2])), mode="constant", grid_mode=True)
-    resize = scipy.ndimage.zoom(patient_pixels, (1,1,1),mode="grid-constant", grid_mode=True)
-
+    resize = scipy.ndimage.zoom(patient_pixels, (min(1,(48 / patient_pixels.shape[0])), (256/patient_pixels.shape[1]), (256/patient_pixels.shape[2])), mode="constant", grid_mode=True)
 
     print(patient_pixels.shape, resize.shape)
     visualisierung(patient_dicom, resize)
