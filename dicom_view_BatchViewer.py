@@ -161,13 +161,13 @@ def run_ct_resize (path, body_part):
     patient_pixels = get_pixels_hu(patient_dicom)  # Numpy Array (Anzahl Schichten, x,y)
     patient_pixels = win_scale(patient_pixels, wl, ww, type(patient_pixels), [patient_pixels.min(), patient_pixels.max()])  # Numpy Array Korrigiert
     patient_pixels = patient_pixels[::-1,...]  # läuft die Schichten von hinten durch, da irgendwie die Schichten umgedreht wurden
-
     patient_pixels = min_max_normalization(patient_pixels, 0.001) # Braucht man nicht unbedingt
 
 
     # RESIZE:
 
     patient_pixels = patient_pixels.astype(np.float32) # sonst meckert zoom
+    patient_pixels = np.transpose(patient_pixels, (1,2,0))
 
     # MÖGL1: Torch grid (Error)
     # pixel_torch = torch.from_numpy(patient_pixels)
@@ -192,9 +192,10 @@ def run_ct_resize (path, body_part):
     # MÖGL3: Zoom
     # https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.zoom.html#scipy.ndimage.zoom
     # reflect’, ‘constant’, ‘nearest’, ‘mirror’, ‘wrap’
-    resize = scipy.ndimage.zoom(patient_pixels, (min(1,
-    (48 / patient_pixels.shape[0])), (256/patient_pixels.shape[1]), (256/patient_pixels.shape[2])), mode="constant", grid_mode=True)
+    # resize = scipy.ndimage.zoom(patient_pixels, (min(1,(48 / patient_pixels.shape[0])), (256/patient_pixels.shape[1]), (256/patient_pixels.shape[2])), mode="constant", grid_mode=True)
+    resize = scipy.ndimage.zoom(patient_pixels, ((256 / patient_pixels.shape[1]), (256 / patient_pixels.shape[2]), min(1, (48 / patient_pixels.shape[0]))),mode="constant", grid_mode=True)
 
+    resize = np.transpose(resize, (1, 2, 0))
 
     print(patient_pixels.shape, resize.shape)
     visualisierung(patient_dicom, resize)
