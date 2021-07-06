@@ -5,6 +5,7 @@ def pytorch(path, name):
     tensor = torch.load(path)
 
     img = tensor[name]
+    print(img.shape)
 
     img = img.permute(0, 2, 1)
     width = img.shape[1]

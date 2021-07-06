@@ -33,7 +33,7 @@ def main():
     # ----------------------------- DICOM CT BatchViwer + Resize to [48,256,256] --------------------------------------
     # (CT_Pfad, Körperteil)
     # Körperteil: abdomen, angio, bon, brain, chest, lungs
-    run_ct_resize('/home/wolfda/Clinic_Data/Data/Covid_Concern/Covid_CT_Kloth/0000100850/3990756/3', "lungs")
+     # Todo: run_ct_resize('/home/wolfda/Clinic_Data/Data/Covid_Concern/Covid_CT_Kloth/0000100850/3990756/3', "lungs")
 
     # ----------------------------- DICOM CT BatchViwer + Nifti maske ------------------------------------------------
     # (CT_Pfad, Körperteil, NiftiMaske_Pfad)
@@ -78,7 +78,7 @@ def main():
     # ----------------------------- Pytorch BatchViwer ------------------------------------------------
     # (pytorch_path, name)
     # name: torch.save("vol": image, "id": ...) -> name = "vol"
-    # Todo: pytorch("/home/wolfda/Clinic_Data/Data/Covid_Concern/Klassen/Beatmung/0000106246_2.pt", "vol")Forschung2021!
+    # Todo: pytorch("/home/wolfda/Clinic_Data/Data/Covid_Concern/Klassen/Beatmung/0000106246_2.pt", "vol")
 
 
     # ----------------------------- Pytorch BatchViwer + Maske ------------------------------------------------
@@ -91,7 +91,7 @@ def main():
     ########################################## DICOM Header ###########################################################
 
     # ----------------------------- DICOM Header ------------------------------------------------
-    # Todo: header("/home/wolfda/Clinic_Data/Data/Covid_Concern/Covid_CT_Kloth/0004108757/3964108/1/000001_1.3.12.2.1107.5.8.18.101104.707971732735697892266504406732011642.dcm")
+    # Todo: header("/media/wolfda/diskAshur2/Lohrenz/0003134365/1286468/999999/999999_2.25.266590992388813470226041125580162655146.dcm")
 
 
 

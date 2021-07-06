@@ -9,7 +9,7 @@ import pydicom  # DICOM Images (.dicom)
 
 import nibabel as nib #NIFTI Images (.nii)
 
-import scipy # rezize: zoom
+import scipy.ndimage # rezize: zoom
 import torchvision.transforms as transforms # rezize: torch
 
 
