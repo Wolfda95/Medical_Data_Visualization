@@ -13,16 +13,16 @@ import pydicom  # DICOM Images (.dicom)
 # -------------------Load DICOM Image------------------------------
 def load_scan(path):
     slices = [pydicom.dcmread(path + '/' + s) for s in sorted(os.listdir(path))] #holt alle DICOM Dateien aus dem Ordner
-    slices = [s for s in slices if 'SliceLocation' in s]
+    #slices = [s for s in slices if 'SliceLocation' in s]
     slices.sort(key=lambda x: int(x.InstanceNumber)) #InstanceNumber sagt an welcher Stelle die DICOM Datei kommen muss !!!!!!!!!!!
-    try:
-        slice_thickness = np.abs(slices[0].ImagePositionPatient[2] -slices[1].ImagePositionPatient[2])
-    except:
-
-        slice_thickness = np.abs(slices[0].SliceLocation - slices[1].SliceLocation)
-
-    for s in slices:
-       s.SliceThickness = slice_thickness
+    # try:
+    #     slice_thickness = np.abs(slices[0].ImagePositionPatient[2] -slices[1].ImagePositionPatient[2])
+    # except:
+    #
+    #     slice_thickness = np.abs(slices[0].SliceLocation - slices[1].SliceLocation)
+    #
+    # for s in slices:
+    #    s.SliceThickness = slice_thickness
     return slices
 
 
@@ -50,7 +50,7 @@ def get_pixels_hu(scans):  # DICOM to Pixel
 def images(mask, img, schicht):
     mask = mask[schicht]
     img = img[schicht]
-    plt.imshow(mask, cmap='gray',)
+    plt.imshow(mask, cmap='jet',)
     plt.imshow(img, cmap='gray', alpha=0.5)
     plt.show()
 
@@ -75,7 +75,7 @@ def overlay_dicom_pytorch(img, mask, schicht):
     # Dicom Image
     patient_dicom = load_scan(img)
     patient_pixels = get_pixels_hu(patient_dicom)  # Numpy Array (Anzahl Schichten, x,y)
-    patient_pixels = patient_pixels[::-1,...]  # läuft die Schichten von hinten durch, da irgendwie die Schichten umgedreht wurden
+    #patient_pixels = patient_pixels[::-1,...]  # läuft die Schichten von hinten durch, da irgendwie die Schichten umgedreht wurden
     #patient_pixels = scipy.ndimage.zoom(patient_pixels, (min(1, (56 / patient_pixels.shape[0])), (802 / patient_pixels.shape[1]), (802 / patient_pixels.shape[2])), mode="grid-constant", grid_mode=True)
     print(patient_pixels.shape)
 

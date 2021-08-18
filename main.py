@@ -124,7 +124,7 @@ def main():
 
     # ----------------------------- DICOM Bild PyTorch Mask ------------------------------------------------
     # (Bild: dicom_path, Mask: pythorch path, Schicht)
-    # Todo: overlay_dicom_pytorch("/home/wolfda/Clinic_Data/Data/Leber/0003128430/3264853/gross0003128430", "/home/wolfda/Clinic_Data/Data/Leber/0003128430/3264853/mask.pt", 35)
+    overlay_dicom_pytorch("/home/wolfda/Clinic_Data/Data/Leber/0003128430/3264853/gross0003128430", "/home/wolfda/Clinic_Data/Data/Leber/0003128430/3264853/mask.pt", 45)
 
 
 
