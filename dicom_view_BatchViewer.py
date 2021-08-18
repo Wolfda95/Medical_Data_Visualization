@@ -16,6 +16,7 @@ import torchvision.transforms as transforms # rezize: torch
 
 # -------------------Load DICOM Image------------------------------
 def load_scan(path):
+
     slices = [pydicom.dcmread(path + '/' + s) for s in os.listdir(path)] #holt alle DICOM Dateien aus dem Ordner
     slices = [s for s in slices if 'SliceLocation' in s]
     slices.sort(key=lambda x: int(x.InstanceNumber)) #InstanceNumber sagt an welcher Stelle die DICOM Datei kommen muss
@@ -40,7 +41,7 @@ def get_pixels_hu(scans):  # DICOM to Pixel
     # The intercept is usually -1024, so air is approximately 0
     image[image == -2000] = 0
 
-    # Convert to Hounsfield units (HU)
+    # # Convert to Hounsfield units (HU)
     intercept = scans[0].RescaleIntercept if 'RescaleIntercept' in scans[0] else -1024
     slope = scans[0].RescaleSlope if 'RescaleSlope' in scans[0] else 1
 
@@ -295,6 +296,23 @@ def run_mrt_mask (ct, mask):
     img_mask = img_mask.transpose(2, 0, 1)
 
     visualisierung_mask(patient_dicom, patient_pixels, img_mask)
+
+
+
+# ------------------- DICOM MRT BatchViwer + DICOM Maske--------------------------------------------
+def run_mrt_dicom_mask (ct, mask):
+
+    patient_dicom = load_scan(ct) # load ct Bild
+    patient_pixels = get_pixels_hu(patient_dicom)  # Numpy Array (Anzahl Schichten, x,y)
+    patient_pixels = patient_pixels[::-1,...]  # läuft die Schichten von hinten durch, da irgendwie die Schichten umgedreht wurden
+    print(patient_pixels.shape)
+
+    mask_dicom = load_scan(mask)  # load ct Bild
+    mask_pixels = get_pixels_hu(mask_dicom)  # Numpy Array (Anzahl Schichten, x,y)
+    mask_pixels = mask_pixels[::-1,...]  # läuft die Schichten von hinten durch, da irgendwie die Schichten umgedreht wurden
+    print(mask_pixels.shape)
+
+    visualisierung_mask(patient_dicom, patient_pixels, mask_pixels)
 
 
 

@@ -7,6 +7,7 @@ from dicom_view_BatchViewer import run_ct_mask
 from dicom_view_BatchViewer import run_mrt
 from dicom_view_BatchViewer import run_mrt_resize
 from dicom_view_BatchViewer import run_mrt_mask
+from dicom_view_BatchViewer import run_mrt_dicom_mask
 
 from nifti_view_BatchViewer import nifti_mrt
 from nifti_view_BatchViewer import nifti_mrt_mask
@@ -14,11 +15,15 @@ from nifti_view_BatchViewer import nifti_ct
 from nifti_view_BatchViewer import nifti_ct_mask
 
 from pytorch_view_BatchViewer import pytorch
+from pytorch_view_BatchViewer import pytorch_name
 from pytorch_view_BatchViewer import pytorch_mask
+from pytorch_view_BatchViewer import pytorch_mask_two
 
 from dicom_header import header
 
 from dicom_nifti import dicom_to_nifti
+
+from overlay import overlay_dicom_pytorch
 
 def main():
     # Eine der blauen Zeilen einkommentieren (jenachdem was man ausgeben will)
@@ -28,7 +33,7 @@ def main():
     # ----------------------------- DICOM CT BatchViwer ------------------------------------------------
     # (CT_Pfad, Körperteil)
     # Körperteil: abdomen, angio, bon, brain, chest, lungs
-    # Todo: run_ct('/home/wolfda/Clinic_Data/Data/Covid_Concern/Covid_CT_Kloth/0003421112/4012259/3', "lungs")
+    # Todo: run_ct('/home/wolfda/Clinic_Data/Data/Covid_Concern/Dicom/Trif/0007912607/4060673/3', "lungs")
 
     # ----------------------------- DICOM CT BatchViwer + Resize to [48,256,256] --------------------------------------
     # (CT_Pfad, Körperteil)
@@ -41,7 +46,7 @@ def main():
     # Todo: run_ct_mask('/home/wolfda/Clinic_Data/Data/Covid_Concern/Covid_CT_Kloth/0000100850/3990756/3', "lungs", "/home/wolfda/Data_lifex/0000100850_0000100850_3990756_3/RoiVolume/R1.uint16.nii.gz")
 
     # ----------------------------- DICOM MRT BatchViwer ------------------------------------------------
-    # Todo: run_mrt('/home/wolfda/Clinic_Data/Test/Prostata_Mamma/0008046191/3865644/6')
+    # Todo: run_mrt('/home/wolfda/Clinic_Data/Data/Leber/0000100441/3310375/9')
 
     # ----------------------------- DICOM MRT BatchViwer + resize to [48,256,256] -------------------------------------
     # Todo: run_mrt_resize('/home/wolfda/Clinic_Data/Test/Prostata_Mamma/0008046191/3865644/6')
@@ -50,6 +55,9 @@ def main():
     # (CT_Pfad, NiftiMaske_Pfad)
     # Todo: run_mrt_mask('/home/wolfda/Clinic_Data/Data/Covid_Concern/Covid_CT_Kloth/0000100850/3990756/3',"/home/wolfda/Data_lifex/0000100850_0000100850_3990756_3/RoiVolume/R1.uint16.nii.gz")
 
+    # ----------------------------- DICOM MRT BatchViwer + DICOM Maske ------------------------------------------------
+    # (CT_Pfad, DICOMMaske_Pfad)
+    # Todo: run_mrt_dicom_mask('/home/wolfda/Clinic_Data/Data/Leber/0003292999/3281121/9',"/home/wolfda/Clinic_Data/Data/Leber/0003292999/3281121/1321")
 
 
     ########################################## BatchViewer Nifti ######################################################
@@ -74,19 +82,26 @@ def main():
 
 
     ########################################## BatchViewer Pytorch Tensor #############################################
-
-    # ----------------------------- Pytorch BatchViwer ------------------------------------------------
+    # ----------------------------- Pytorch BatchViwer  ------------------------------------------------
     # (pytorch_path, name)
     # name: torch.save("vol": image, "id": ...) -> name = "vol"
-    # Todo: pytorch("/home/wolfda/Clinic_Data/Data/Covid_Concern/Klassen/Beatmung/0000106246_2.pt", "vol")
+    # Todo: pytorch("/home/wolfda/PycharmProjects/Leber/mask.pt")
 
 
-    # ----------------------------- Pytorch BatchViwer + Maske ------------------------------------------------
+    # ----------------------------- Pytorch BatchViwer (File in liste) ------------------------------------------------
+    # (pytorch_path, name)
+    # name: torch.save("vol": image, "id": ...) -> name = "vol"
+    # Todo: pytorch_name("/home/wolfda/PycharmProjects/Leber/mask.pt", "vol")
+
+
+    # ----------------------------- Pytorch BatchViwer + Maske (Bild und Maske in einer Liste) ------------------------------------------------
     # (pytorch_path, name_img, name_mask)
     # name: torch.save("vol": image, "mask": Maske)
-    # Todo: pytorch_mask("/home/wolfda/Clinic_Data/Data/Covid_Concern/Klassen/Beatmung/0000106246_2.pt", "vol", "mask")
+    # Todo: pytorch_mask("/home/wolfda/Clinic_Data/Test/Prostata_Mamma/0000229894/3975901/98/000001_1/serie.pt", "vol", "mask")
 
-
+    # ----------------------------- Pytorch BatchViwer + Maske (Bild und Makse in 2 getrennten files)------------------------------------------------
+    # (pytorch_image_path, pytorch_roi_path)
+    # Todo: pytorch_mask_two("/home/wolfda/PycharmProjects/clinic-project-tracking/helper/serie.pt", "/home/wolfda/PycharmProjects/clinic-project-tracking/helper/mask.pt")
 
     ########################################## DICOM Header ###########################################################
 
@@ -103,6 +118,13 @@ def main():
     # (dicom_path, save_folder)
     # Todo: dicom_to_nifti("/home/wolfda/Clinic_Data/Test/Test_ROI_IMPAX/4078774/4078774", "/home/wolfda/Clinic_Data/Test/Test_ROI_IMPAX/4078774/4078774/nifti_test")
     # ACTUNG: Eventuell sind nach der umwandlung x,y,schichten im Tensor Vertauscht (z.B. statt (x,y, Anzahl Schichten) kommt danach (x,Anzahl Schichten,y) -> nach dem auslesen der Pixelwerte als Numpy array: img = img.transpose(1, 0, 2) )
+
+
+    ########################################## Übereineander Legen ##########################################################
+
+    # ----------------------------- DICOM Bild PyTorch Mask ------------------------------------------------
+    # (Bild: dicom_path, Mask: pythorch path, Schicht)
+    # Todo: overlay_dicom_pytorch("/home/wolfda/Clinic_Data/Data/Leber/0003128430/3264853/gross0003128430", "/home/wolfda/Clinic_Data/Data/Leber/0003128430/3264853/mask.pt", 35)
 
 
 
