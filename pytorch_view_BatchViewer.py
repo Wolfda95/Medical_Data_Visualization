@@ -29,9 +29,14 @@ def pytorch_mask(path, name_img, name_mask):
 
     img = tensor[name_img]
     mask = tensor[name_mask]
+    print(img.shape)
+    print(mask.shape)
 
     img = img.permute(0, 2, 1)
-    mask = mask.permute(0, 2, 1)
+    mask = mask.permute(0, 2, 1) #mask = mask.transpose(0, 2, 1)
+    print(img.shape)
+    print(mask.shape)
+
     width = img.shape[1]
     hight = img.shape[2]
     view_batch(img, mask, width=width, height=hight)
