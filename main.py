@@ -57,7 +57,7 @@ def main():
 
     # ----------------------------- DICOM MRT BatchViwer + DICOM Maske ------------------------------------------------
     # (CT_Pfad, DICOMMaske_Pfad)
-    # Todo: run_mrt_dicom_mask('/home/wolfda/Clinic_Data/Data/Leber/0003292999/3281121/9',"/home/wolfda/Clinic_Data/Data/Leber/0003292999/3281121/1321")
+    # Todo: run_mrt_dicom_mask('/home/wolfda/Clinic_Data/Data/Leber/Python_readin/0000100441/3310375/0000100441gross',"/home/wolfda/Clinic_Data/Data/Leber/Python_readin/0000100441/3310375/1222")
 
 
     ########################################## BatchViewer Nifti ######################################################
@@ -97,7 +97,7 @@ def main():
     # ----------------------------- Pytorch BatchViwer + Maske (Bild und Maske in einer Liste) ------------------------------------------------
     # (pytorch_path, name_img, name_mask)
     # name: torch.save("vol": image, "mask": Maske)
-    # Todo: pytorch_mask("/home/wolfda/Clinic_Data/Data/Leber/Python_net/train/0000100441.pt", "vol", "mask")
+    # Todo: pytorch_mask("/home/wolfda/Clinic_Data/Data/Leber/Python_net/48_800_800/train/0000100441.pt", "vol", "mask")
 
     # ----------------------------- Pytorch BatchViwer + Maske (Bild und Makse in 2 getrennten files)------------------------------------------------
     # (pytorch_image_path, pytorch_roi_path)
@@ -125,7 +125,7 @@ def main():
 
     # ----------------------------- DICOM Bild PyTorch Mask ------------------------------------------------
     # (Bild: dicom_path, Mask: pythorch path, Schicht)
-    # Todo: overlay_dicom_pytorch("/home/wolfda/Clinic_Data/Data/Leber/0003128430/3264853/gross0003128430", "/home/wolfda/Clinic_Data/Data/Leber/0003128430/3264853/mask.pt", 45)
+    overlay_dicom_pytorch("/home/wolfda/Clinic_Data/Data/Leber/Backup/0000100441/3310375/0000100441gross", "/home/wolfda/Clinic_Data/Data/Leber/Backup/0000100441/3310375/mask.pt", 45)
 
 
 

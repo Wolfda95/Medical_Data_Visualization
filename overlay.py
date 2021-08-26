@@ -68,7 +68,7 @@ def visualisierung_mask(patient_pixels, img_mask):
 def overlay_dicom_pytorch(img, mask, schicht):
 
     # PyTorch Maske
-    mask = torch.load(mask)[::-1,...] # für Torch: .permute(0, 2, 1)
+    mask = torch.load(mask) #[::-1,...] # für Torch: .permute(0, 2, 1)
     #mask = scipy.ndimage.zoom(mask, (min(1, (56 / mask.shape[0])), (120 / mask.shape[1]), (160 / mask.shape[2])),mode="grid-constant", grid_mode=True)
     print(mask.shape)
 
