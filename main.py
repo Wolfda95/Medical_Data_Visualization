@@ -33,7 +33,7 @@ def main():
     # ----------------------------- DICOM CT BatchViwer ------------------------------------------------
     # (CT_Pfad, Körperteil)
     # Körperteil: abdomen, angio, bon, brain, chest, lungs
-    # Todo: run_ct('/home/wolfda/Clinic_Data/Data/Covid_Concern/Dicom/Trif/0007912607/4060673/3', "lungs")
+    # Todo: run_ct("/home/wolfda/Clinic_Data/Data/Covid_Concern/Dicom/Python_Extract/0000100850/3990756/3", "lungs")
 
     # ----------------------------- DICOM CT BatchViwer + Resize to [48,256,256] --------------------------------------
     # (CT_Pfad, Körperteil)
@@ -46,7 +46,7 @@ def main():
     # Todo: run_ct_mask('/home/wolfda/Clinic_Data/Data/Covid_Concern/Covid_CT_Kloth/0000100850/3990756/3', "lungs", "/home/wolfda/Data_lifex/0000100850_0000100850_3990756_3/RoiVolume/R1.uint16.nii.gz")
 
     # ----------------------------- DICOM MRT BatchViwer ------------------------------------------------
-    # Todo: run_mrt('/home/wolfda/Clinic_Data/Data/Leber/0000100441/3310375/9')
+    # Todo: run_mrt('/media/wolfda/XAIRAD-UKU/3')
 
     # ----------------------------- DICOM MRT BatchViwer + resize to [48,256,256] -------------------------------------
     # Todo: run_mrt_resize('/home/wolfda/Clinic_Data/Test/Prostata_Mamma/0008046191/3865644/6')
@@ -73,7 +73,7 @@ def main():
     # Todo: nifti_ct_mask("/home/wolfda/Clinic_Data/Challenge/Challenge_COVID-19-20_v2/Train/volume-covid19-A-0003_ct.nii.gz", "lungs", "/home/wolfda/Clinic_Data/Challenge/Challenge_COVID-19-20_v2/Train/volume-covid19-A-0003_seg.nii.gz")
 
     # ----------------------------- Nifti MRT BatchViwer ------------------------------------------------
-    # Todo: nifti_mrt("/home/wolfda/Clinic_Data/Challenge/Challenge_COVID-19-20_v2/Train/volume-covid19-A-0003_ct.nii.gz")
+    # Todo: nifti_mrt("/home/wolfda/Data_lifex/catharina_0005117626_52335_201/RoiVolume/R1.uint16.nii.gz")
 
     # ----------------------------- Nifti MRT BatchViwer + Maske ------------------------------------------------
     # (MRT_Pfad, Maske_Pfad)
@@ -83,15 +83,15 @@ def main():
 
     ########################################## BatchViewer Pytorch Tensor #############################################
     # ----------------------------- Pytorch BatchViwer  ------------------------------------------------
-    # (pytorch_path, name)
-    # name: torch.save("vol": image, "id": ...) -> name = "vol"
-    # Todo: pytorch("/home/wolfda/PycharmProjects/Leber/mask.pt")
+    # (pytorch_path)
+    # name: torch.save(image)
+    # Todo:  pytorch("/home/wolfda/Clinic_Data/Data/Sarkome_Catharina/Data/Test_Data/0.pt")
 
 
     # ----------------------------- Pytorch BatchViwer (File in liste) ------------------------------------------------
     # (pytorch_path, name)
     # name: torch.save("vol": image, "id": ...) -> name = "vol"
-    # Todo: pytorch_name("/home/wolfda/PycharmProjects/Leber/mask.pt", "vol")
+    pytorch_name("/home/wolfda/Clinic_Data/Data/Sarkome_Catharina/Data/Test_Data/0.pt", "vol")
 
 
     # ----------------------------- Pytorch BatchViwer + Maske (Bild und Maske in einer Liste) ------------------------------------------------
@@ -107,7 +107,7 @@ def main():
     ########################################## DICOM Header ###########################################################
 
     # ----------------------------- DICOM Header ------------------------------------------------
-    # Todo: header("/home/wolfda/Clinic_Data/Test/Test_ROI_IMPAX/4078774/4078774/3/000001_1.3.12.2.1107.5.2.19.45218.2021032513441049384764502.dcm")
+    # Todo: header("/home/wolfda/Clinic_Data/Data/Covid_Concern/Dicom/Python_Extract/0000100850/3990756/3/000001_1.3.12.2.1107.5.1.4.122102.30000020100907291877200016274.dcm")
 
 
 
@@ -125,7 +125,7 @@ def main():
 
     # ----------------------------- DICOM Bild PyTorch Mask ------------------------------------------------
     # (Bild: dicom_path, Mask: pythorch path, Schicht)
-    overlay_dicom_pytorch("/home/wolfda/Clinic_Data/Data/Leber/Backup/0000100441/3310375/0000100441gross", "/home/wolfda/Clinic_Data/Data/Leber/Backup/0000100441/3310375/mask.pt", 45)
+    # Todo: overlay_dicom_pytorch("/home/wolfda/Clinic_Data/Data/Leber/Backup/0000100441/3310375/0000100441gross", "/home/wolfda/Clinic_Data/Data/Leber/Backup/0000100441/3310375/mask.pt", 45)
 
 
 

@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import os
 import numpy as np
 import torch
+import nibabel as nib #NIFTI Images (.nii)
 
 
 from batchviewer import view_batch  # 3D Visualisierung (aus Git runtergeladen)
@@ -81,3 +82,23 @@ def overlay_dicom_pytorch(img, mask, schicht):
 
     images(mask, patient_pixels, schicht)
     visualisierung_mask(patient_pixels, np.transpose(mask, (0, 2, 1)))
+
+# def overlay_dicom_nifti(img, mask, schicht):
+#
+#     # PyTorch Maske
+#     nifti = nib.load(mask)
+#     mask = nifti.get_fdata()  # Numpy Array (x,y, Anzahl Schichten)
+#
+#     print(nifti.header)
+#     print(img.shape)
+#     print(mask.shape)
+#
+#     # Dicom Image
+#     patient_dicom = load_scan(img)
+#     patient_pixels = get_pixels_hu(patient_dicom)  # Numpy Array (Anzahl Schichten, x,y)
+#     #patient_pixels = patient_pixels[::-1,...]  # läuft die Schichten von hinten durch, da irgendwie die Schichten umgedreht wurden
+#     #patient_pixels = scipy.ndimage.zoom(patient_pixels, (min(1, (56 / patient_pixels.shape[0])), (802 / patient_pixels.shape[1]), (802 / patient_pixels.shape[2])), mode="grid-constant", grid_mode=True)
+#     print(patient_pixels.shape)
+#
+#     images(mask, patient_pixels, schicht)
+#     visualisierung_mask(patient_pixels, np.transpose(mask, (0, 2, 1)))
