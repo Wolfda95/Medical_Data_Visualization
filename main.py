@@ -13,6 +13,7 @@ from nifti_view_BatchViewer import nifti_mrt
 from nifti_view_BatchViewer import nifti_mrt_mask
 from nifti_view_BatchViewer import nifti_ct
 from nifti_view_BatchViewer import nifti_ct_mask
+from nifti_view_BatchViewer import nifti_volume
 
 from pytorch_view_BatchViewer import pytorch
 from pytorch_view_BatchViewer import pytorch_name
@@ -73,13 +74,15 @@ def main():
     # Todo: nifti_ct_mask("/home/wolfda/Clinic_Data/Challenge/Challenge_COVID-19-20_v2/Train/volume-covid19-A-0003_ct.nii.gz", "lungs", "/home/wolfda/Clinic_Data/Challenge/Challenge_COVID-19-20_v2/Train/volume-covid19-A-0003_seg.nii.gz")
 
     # ----------------------------- Nifti MRT BatchViwer ------------------------------------------------
-    # Todo: nifti_mrt("/home/wolfda/Data_lifex/catharina_0005117626_52335_201/RoiVolume/R1.uint16.nii.gz")
+    # Todo:  nifti_mrt("/home/wolfda/Data_lifex/0007890533_0007890533_3757035_5/RoiVolume/R1.uint16.nii.gz")
 
     # ----------------------------- Nifti MRT BatchViwer + Maske ------------------------------------------------
     # (MRT_Pfad, Maske_Pfad)
     # Todo: nifti_mrt_mask("/home/wolfda/Clinic_Data/Challenge/Challenge_COVID-19-20_v2/Train/volume-covid19-A-0003_ct.nii.gz", "/home/wolfda/Clinic_Data/Challenge/Challenge_COVID-19-20_v2/Train/volume-covid19-A-0003_seg.nii.gz")
 
-
+    # ----------------------------- Nifti 3d Volume------------------------------------------------
+    #(Nifti Maske, Dicom Bild)
+    nifti_volume("/home/wolfda/Clinic_Data/Data/Sarkome_Catharina/3D Volume/1mm/R1.uint16.nii.gz", "/home/wolfda/Clinic_Data/Data/Sarkome_Catharina/3D Volume/1mm/3/000001_1.3.12.2.1107.5.1.4.96208.30000019111307071679700001478.dcm")
 
     ########################################## BatchViewer Pytorch Tensor #############################################
     # ----------------------------- Pytorch BatchViwer  ------------------------------------------------
@@ -91,7 +94,7 @@ def main():
     # ----------------------------- Pytorch BatchViwer (File in liste) ------------------------------------------------
     # (pytorch_path, name)
     # name: torch.save("vol": image, "id": ...) -> name = "vol"
-    pytorch_name("/home/wolfda/Clinic_Data/Data/Sarkome_Catharina/Data/Test_Data/0.pt", "vol")
+    # Todo: pytorch_name("/home/wolfda/Clinic_Data/Data/Sarkome_Catharina/Data/Test_Data/0.pt", "vol")
 
 
     # ----------------------------- Pytorch BatchViwer + Maske (Bild und Maske in einer Liste) ------------------------------------------------
@@ -107,7 +110,7 @@ def main():
     ########################################## DICOM Header ###########################################################
 
     # ----------------------------- DICOM Header ------------------------------------------------
-    # Todo: header("/home/wolfda/Clinic_Data/Data/Covid_Concern/Dicom/Python_Extract/0000100850/3990756/3/000001_1.3.12.2.1107.5.1.4.122102.30000020100907291877200016274.dcm")
+    # Todo: header("/home/wolfda/Clinic_Data/Data/Sarkome_Catharina/3D Volume/3757035/5/000001_1.3.12.2.1107.5.1.4.96208.30000019111307071679700002905.dcm")
 
 
 
