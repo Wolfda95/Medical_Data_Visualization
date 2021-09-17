@@ -152,6 +152,10 @@ def nifti_volume(mask, image):
     new_mask = scipy.ndimage.interpolation.zoom(mask, real_resize_factor, prefilter=False, mode='nearest', cval=0.0) # prefilter=False Sonst ist das Bild weiß auf schichten die keine Segmentierung haben
     print(new_mask.shape)
 
+    # Smoothing
+    #https://docs.scipy.org/doc/scipy/reference/reference/generated/scipy.ndimage.gaussian_filter.html#scipy.ndimage.gaussian_filter
+    new_mask = scipy.ndimage.gaussian_filter(new_mask, sigma=[1,1,1], order=0, output=None, mode='reflect', cval=0.0, truncate=4.0)
+
     # Was komisches
     p = new_mask.transpose(2, 1, 0)
 
@@ -163,16 +167,17 @@ def nifti_volume(mask, image):
 
     print("Drawing 1")
 
-    # Make the colormap single color since the axes are positional not intensity.
-    #    colormap=['rgb(255,105,180)','rgb(255,255,51)','rgb(0,191,255)']
-    # colormap = ['rgb(236, 236, 212)', 'rgb(236, 236, 212)']
-    colormap = ['rgb(124, 252, 0)', 'rgb(124, 252, 0)']
+    # colormap=['rgb(255,105,180)','rgb(255,255,51)','rgb(0,191,255)']
+    colormap = ['rgb(236, 236, 212)', 'rgb(236, 236, 212)']
+    #colormap = ['rgb(50,205,50)', 'rgb(50,205,50)'] # Farbe des Dings anpassen
 
     fig = create_trisurf(x=x, y=y, z=z, plot_edges=False,
+                            show_colorbar = False, # Brauchen keine Colorbar weil nur eine Farbe
                             colormap=colormap,
                             simplices=faces,
-                            backgroundcolor='rgb(64, 64, 64)',
-                            title="Interactive Visualization")
+                            showbackground = True,
+                            backgroundcolor='rgb(64, 64, 64)', # Hintergrund Farbe Anpassen
+                            title="Lymphom") # Titel anpassen
     iplot(fig)
 
     # # Plot Mögl. 2

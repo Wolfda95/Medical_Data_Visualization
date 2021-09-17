@@ -17,6 +17,9 @@ def pytorch_name(path, name):
     img = tensor[name]
     print(img.shape)
 
+    classe = tensor["class"]
+    print(classe)
+
     img = img.permute(0, 2, 1)
     width = img.shape[1]
     hight = img.shape[2]
