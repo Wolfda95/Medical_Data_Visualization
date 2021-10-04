@@ -180,29 +180,7 @@ def nifti_volume(mask, image):
                             title="Lymphom") # Titel anpassen
     iplot(fig)
 
-    # # Plot Mögl. 2
-    # print("Drawing 2")
-    # x, y, z = zip(*verts)
-    # fig = plt.figure(figsize=(10, 10))
-    # ax = fig.add_subplot(111, projection='3d')
-    #
-    # # Fancy indexing: `verts[faces]` to generate a collection of triangles
-    # mesh = Poly3DCollection(verts[faces], linewidths=0.05, alpha=1)
-    # face_color = [1, 1, 0.9]
-    # mesh.set_facecolor(face_color)
-    # ax.add_collection3d(mesh)
-    #
-    # ax.set_xlim(0, max(x))
-    # ax.set_ylim(0, max(y))
-    # ax.set_zlim(0, max(z))
-    # #     ax.set_axis_bgcolor((0.7, 0.7, 0.7))
-    # ax.set_facecolor((0.7, 0.7, 0.7))
-    # plt.show()
 
-
-
-    #values = np.unique(new_mask)
-    #print(values)
 
     width = mask.shape[1]
     hight = mask.shape[2]
