@@ -34,12 +34,12 @@ def main():
     # ----------------------------- DICOM CT BatchViwer ------------------------------------------------
     # (CT_Pfad, Körperteil)
     # Körperteil: abdomen, angio, bon, brain, chest, lungs
-    # Todo: run_ct("/home/wolfda/Clinic_Data/Data/Covid_Concern/Dicom/Python_Extract/0000100850/3990756/3", "lungs")
+    # Todo:  run_ct("/home/wolfda/Clinic_Data/Data/Covid_Concern/Dicom/Python_Extract/0000100850/3990756/3", "lungs")
 
     # ----------------------------- DICOM CT BatchViwer + Resize to [48,256,256] --------------------------------------
     # (CT_Pfad, Körperteil)
     # Körperteil: abdomen, angio, bon, brain, chest, lungs
-     # Todo: run_ct_resize('/home/wolfda/Clinic_Data/Data/Covid_Concern/Covid_CT_Kloth/0000100850/3990756/3', "lungs")
+    # Todo: run_ct_resize('/home/wolfda/Clinic_Data/Data/Covid_Concern/Covid_CT_Kloth/0000100850/3990756/3', "lungs")
 
     # ----------------------------- DICOM CT BatchViwer + Nifti maske ------------------------------------------------
     # (CT_Pfad, Körperteil, NiftiMaske_Pfad)
@@ -94,7 +94,7 @@ def main():
     # ----------------------------- Pytorch BatchViwer (File in liste) ------------------------------------------------
     # (pytorch_path, name)
     # name: torch.save("vol": image, "id": ...) -> name = "vol"
-    # Todo:  pytorch_name("/home/wolfda/Clinic_Data/Data/Sarkome_Catharina/Data/Neu_Dani/0_Geheilt.pt", "vol")
+    # Todo: pytorch_name("/home/wolfda/Clinic_Data/Data/Sarkome_Catharina/Data/Neu_Dani/TrainValTest_Alle/test/21_Rezidiv.pt", "vol")
 
 
     # ----------------------------- Pytorch BatchViwer + Maske (Bild und Maske in einer Liste) ------------------------------------------------

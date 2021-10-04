@@ -84,6 +84,8 @@ def min_max_normalization(data, eps):
 # ------------------- DICOM Header der ersten Schicht + Visualisierung (ohne Maske)--------------------------------------------
 def visualisierung(patient_dicom, patient_pixels):
     print(patient_dicom[1]) # DICOM Header der ersten Schicht
+    print(patient_dicom[2])
+    print(patient_dicom[3])
 
     patient_pixels = np.transpose(patient_pixels, (0, 2, 1))
     width = patient_pixels.shape[1]
@@ -130,6 +132,8 @@ def run_ct (path, body_part):
     patient_pixels = get_pixels_hu(patient_dicom)  # Numpy Array (Anzahl Schichten, x,y)
     patient_pixels = win_scale(patient_pixels, wl, ww, type(patient_pixels), [patient_pixels.min(), patient_pixels.max()])  # Numpy Array Korrigiert
     patient_pixels = patient_pixels[::-1,...]  # läuft die Schichten von hinten durch, da irgendwie die Schichten umgedreht wurden
+
+    print(patient_pixels.shape)
 
     visualisierung(patient_dicom, patient_pixels)
 

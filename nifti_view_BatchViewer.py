@@ -168,15 +168,15 @@ def nifti_volume(mask, image):
     print("Drawing 1")
 
     # colormap=['rgb(255,105,180)','rgb(255,255,51)','rgb(0,191,255)']
-    colormap = ['rgb(236, 236, 212)', 'rgb(236, 236, 212)']
-    #colormap = ['rgb(50,205,50)', 'rgb(50,205,50)'] # Farbe des Dings anpassen
+    #colormap = ['rgb(236, 236, 212)', 'rgb(236, 236, 212)']
+    colormap = ['rgb(50,205,50)', 'rgb(50,205,50)'] # Farbe des Dings anpassen
 
     fig = create_trisurf(x=x, y=y, z=z, plot_edges=False,
                             show_colorbar = False, # Brauchen keine Colorbar weil nur eine Farbe
                             colormap=colormap,
                             simplices=faces,
                             showbackground = True,
-                            backgroundcolor='rgb(64, 64, 64)', # Hintergrund Farbe Anpassen
+                            #backgroundcolor= 'rgb(255, 255, 255)', # 'rgb(64, 64, 64)', # Hintergrund Farbe Anpassen
                             title="Lymphom") # Titel anpassen
     iplot(fig)
 
