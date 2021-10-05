@@ -82,7 +82,7 @@ def main():
 
     # ----------------------------- Nifti 3d Volume------------------------------------------------
     #(Nifti Maske, Dicom Bild)
-    nifti_volume("/home/wolfda/Clinic_Data/Data/Sarkome_Catharina/3D Volume/1mm/R1.uint16.nii.gz", "/home/wolfda/Clinic_Data/Data/Sarkome_Catharina/3D Volume/1mm/3/000001_1.3.12.2.1107.5.1.4.96208.30000019111307071679700001478.dcm")
+    # Todo: nifti_volume("/home/wolfda/Clinic_Data/Data/Sarkome_Catharina/3D Volume/1mm/R1.uint16.nii.gz", "/home/wolfda/Clinic_Data/Data/Sarkome_Catharina/3D Volume/1mm/3/000001_1.3.12.2.1107.5.1.4.96208.30000019111307071679700001478.dcm")
 
     ########################################## BatchViewer Pytorch Tensor #############################################
     # ----------------------------- Pytorch BatchViwer  ------------------------------------------------
@@ -94,7 +94,7 @@ def main():
     # ----------------------------- Pytorch BatchViwer (File in liste) ------------------------------------------------
     # (pytorch_path, name)
     # name: torch.save("vol": image, "id": ...) -> name = "vol"
-    # Todo: pytorch_name("/home/wolfda/Clinic_Data/Data/Sarkome_Catharina/Data/Neu_Dani/TrainValTest_Alle/test/21_Rezidiv.pt", "vol")
+    pytorch_name("/home/wolfda/Clinic_Data/Data/Covid_Concern/Klassen/kloth_trif_3/3D_100_384_384_cut_equal/val/0003008959_3.pt", "vol")
 
 
     # ----------------------------- Pytorch BatchViwer + Maske (Bild und Maske in einer Liste) ------------------------------------------------

@@ -176,7 +176,8 @@ def nifti_volume(mask, image):
                             colormap=colormap,
                             simplices=faces,
                             showbackground = True,
-                            #backgroundcolor= 'rgb(255, 255, 255)', # 'rgb(64, 64, 64)', # Hintergrund Farbe Anpassen
+                            gridcolor="rgb(0,0,0)", # Hintergrund Lininen Farbe Anpassen
+                            backgroundcolor= 'rgb(255, 255, 255)', # 'rgb(64, 64, 64)', # Hintergrund Farbe Anpassen
                             title="Lymphom") # Titel anpassen
     iplot(fig)
 
