@@ -34,7 +34,7 @@ def main():
     # ----------------------------- DICOM CT BatchViwer ------------------------------------------------
     # (CT_Pfad, Körperteil)
     # Körperteil: abdomen, angio, bon, brain, chest, lungs
-    # Todo:  run_ct("/home/wolfda/Clinic_Data/Data/Covid_Concern/Dicom/Python_Extract/0000100850/3990756/3", "lungs")
+    run_ct("/media/wolfda/XAIRAD-UKU/Lis_Mez_Wol/12SE6937/CT Th Abd/1000208A/1000208B/1000208C", "lungs")
 
     # ----------------------------- DICOM CT BatchViwer + Resize to [48,256,256] --------------------------------------
     # (CT_Pfad, Körperteil)
@@ -94,7 +94,7 @@ def main():
     # ----------------------------- Pytorch BatchViwer (File in liste) ------------------------------------------------
     # (pytorch_path, name)
     # name: torch.save("vol": image, "id": ...) -> name = "vol"
-    pytorch_name("/home/wolfda/Clinic_Data/Data/Covid_Concern/Klassen/kloth_trif_3/3D_100_384_384_cut_equal/val/0003008959_3.pt", "vol")
+    # Todo: pytorch_name("/home/wolfda/Clinic_Data/Data/Covid_Concern/Klassen/kloth_trif_3/3D_100_384_384_cut_equal/val/0003008959_3.pt", "vol")
 
 
     # ----------------------------- Pytorch BatchViwer + Maske (Bild und Maske in einer Liste) ------------------------------------------------
@@ -110,7 +110,7 @@ def main():
     ########################################## DICOM Header ###########################################################
 
     # ----------------------------- DICOM Header ------------------------------------------------
-    # Todo: header("/home/wolfda/Clinic_Data/Data/Sarkome_Catharina/3D Volume/3757035/5/000001_1.3.12.2.1107.5.1.4.96208.30000019111307071679700002905.dcm")
+    # Todo: header("/media/wolfda/diskAshur2/Lission/U.E. 25.12.1957/10000005/10000006/10000007/100000A0")
 
 
 
