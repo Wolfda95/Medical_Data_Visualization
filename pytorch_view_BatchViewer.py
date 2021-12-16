@@ -17,6 +17,9 @@ def pytorch_name(path, name):
     img = tensor[name]
     print(img.shape)
 
+    #id = tensor["info"]
+    #print(id)
+
     classe = tensor["class"]
     print(classe)
 

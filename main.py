@@ -34,7 +34,7 @@ def main():
     # ----------------------------- DICOM CT BatchViwer ------------------------------------------------
     # (CT_Pfad, Körperteil)
     # Körperteil: abdomen, angio, bon, brain, chest, lungs
-    run_ct("/media/wolfda/XAIRAD-UKU/Lis_Mez_Wol/12SE6937/CT Th Abd/1000208A/1000208B/1000208C", "lungs")
+    # Todo: run_ct("/home/wolfda/Clinic_Data/Data/Sarkome_Catharina/MINT_EXPORT_ACHTUNG!!!!!!!!!!!!/0005117626/Read 1/0/Baseline/1.3.46.670589.33.1.18596483783913900609.28552910093127233038", "abdomen")
 
     # ----------------------------- DICOM CT BatchViwer + Resize to [48,256,256] --------------------------------------
     # (CT_Pfad, Körperteil)
@@ -47,7 +47,7 @@ def main():
     # Todo: run_ct_mask('/home/wolfda/Clinic_Data/Data/Covid_Concern/Covid_CT_Kloth/0000100850/3990756/3', "lungs", "/home/wolfda/Data_lifex/0000100850_0000100850_3990756_3/RoiVolume/R1.uint16.nii.gz")
 
     # ----------------------------- DICOM MRT BatchViwer ------------------------------------------------
-    # Todo: run_mrt('/media/wolfda/XAIRAD-UKU/3')
+    # Todo:  run_mrt('/home/wolfda/Clinic_Data/Test/Prostata/Lendle/0007884126/4178570/8')
 
     # ----------------------------- DICOM MRT BatchViwer + resize to [48,256,256] -------------------------------------
     # Todo: run_mrt_resize('/home/wolfda/Clinic_Data/Test/Prostata_Mamma/0008046191/3865644/6')
@@ -74,7 +74,7 @@ def main():
     # Todo: nifti_ct_mask("/home/wolfda/Clinic_Data/Challenge/Challenge_COVID-19-20_v2/Train/volume-covid19-A-0003_ct.nii.gz", "lungs", "/home/wolfda/Clinic_Data/Challenge/Challenge_COVID-19-20_v2/Train/volume-covid19-A-0003_seg.nii.gz")
 
     # ----------------------------- Nifti MRT BatchViwer ------------------------------------------------
-    # Todo:  nifti_mrt("/home/wolfda/Data_lifex/0007890533_0007890533_3757035_5/RoiVolume/R1.uint16.nii.gz")
+    # Todo: nifti_mrt("/home/wolfda/PycharmProjects/Cathrina/attention_maps/_model.features.transition3.conv/attention_map_0_0_0.nii.gz")
 
     # ----------------------------- Nifti MRT BatchViwer + Maske ------------------------------------------------
     # (MRT_Pfad, Maske_Pfad)
@@ -88,19 +88,19 @@ def main():
     # ----------------------------- Pytorch BatchViwer  ------------------------------------------------
     # (pytorch_path)
     # name: torch.save(image)
-    # Todo:  pytorch("/home/wolfda/Clinic_Data/Data/Sarkome_Catharina/Data/Test_Data/0.pt")
+    # Todo:  pytorch("/home/wolfda/PycharmProjects/clinic-project-tracking/helper/mask.pt")
 
 
     # ----------------------------- Pytorch BatchViwer (File in liste) ------------------------------------------------
     # (pytorch_path, name)
     # name: torch.save("vol": image, "id": ...) -> name = "vol"
-    # Todo: pytorch_name("/home/wolfda/Clinic_Data/Data/Covid_Concern/Klassen/kloth_trif_3/3D_100_384_384_cut_equal/val/0003008959_3.pt", "vol")
+    pytorch_name("/home/wolfda/Clinic_Data/Data/Sarkome_Catharina/Data/Body/Lymphome_Maskiert/0003077314_0_Remission.pt", "vol")
 
 
     # ----------------------------- Pytorch BatchViwer + Maske (Bild und Maske in einer Liste) ------------------------------------------------
     # (pytorch_path, name_img, name_mask)
     # name: torch.save("vol": image, "mask": Maske)
-    # Todo: pytorch_mask("/home/wolfda/Clinic_Data/Data/Leber/Python_net/48_800_800/train/0000100441.pt", "vol", "mask")
+    # Todo: pytorch_mask("/home/wolfda/Clinic_Data/Data/Sarkome_Catharina/Data/Segmentierung/DenseNet_NurMarc/Test1/Test/0008195904_139_Remission.pt", "vol", "seg")
 
     # ----------------------------- Pytorch BatchViwer + Maske (Bild und Makse in 2 getrennten files)------------------------------------------------
     # (pytorch_image_path, pytorch_roi_path)
@@ -110,7 +110,7 @@ def main():
     ########################################## DICOM Header ###########################################################
 
     # ----------------------------- DICOM Header ------------------------------------------------
-    # Todo: header("/media/wolfda/diskAshur2/Lission/U.E. 25.12.1957/10000005/10000006/10000007/100000A0")
+    # Todo: header("/home/wolfda/Clinic_Data/Data/Sarkome_Catharina/MINT_EXPORT_ACHTUNG!!!!!!!!!!!!/0005117626/Read 1/0/Baseline/1.3.46.670589.33.1.18596483783913900609.28552910093127233038/1.3.46.670589.33.1.39367215802251069773.2319872420586779968")
 
 
 
