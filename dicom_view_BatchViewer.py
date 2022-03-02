@@ -18,7 +18,7 @@ import torchvision.transforms as transforms # rezize: torch
 def load_scan(path):
 
     slices = [pydicom.dcmread(path + '/' + s) for s in os.listdir(path)] #holt alle DICOM Dateien aus dem Ordner
-    slices = [s for s in slices if 'SliceLocation' in s]
+    #slices = [s for s in slices if 'SliceLocation' in s]
     slices.sort(key=lambda x: int(x.InstanceNumber)) #InstanceNumber sagt an welcher Stelle die DICOM Datei kommen muss
     try:
         slice_thickness = np.abs(slices[0].ImagePositionPatient[2] -
@@ -109,23 +109,28 @@ def run_ct (path, body_part):
     if body_part == "abdomen":
         wl = 60
         ww = 400
+        print("abdomen")
     if body_part == "angio":
         wl = 300
         ww = 600
+        print("angio")
     if body_part == "bone":
         wl = 300
         ww = 150
+        print("bone")
     if body_part == "brain":
         wl = 40
         ww = 80
+        print("brain")
     if body_part == "chest":
         wl = 40
         ww = 400
+        print("chest")
     if body_part == "lungs":
         wl = -400
         ww = 1500
-    else:
-        print("not a correct body_part")
+        print("lungs")
+
 
 
     patient_dicom = load_scan(path)
@@ -318,5 +323,16 @@ def run_mrt_dicom_mask (ct, mask):
 
     visualisierung_mask(patient_dicom, patient_pixels, mask_pixels)
 
+# ------------------- DICOM MRT BatchViwer --------------------------------------------
+def run_xray (path):
 
+    patient_dicom = pydicom.read_file(path)
+    patient_pixels = patient_dicom.pixel_array
+    print(patient_pixels.shape)
+    patient_pixels = np.transpose(patient_pixels, (1, 0))
+    width = patient_pixels.shape[0]/3
+    hight = patient_pixels.shape[1]/3
+    view_batch(patient_pixels, width=width, height=hight)
+    #patient_pixels = get_pixels_hu(patient_dicom)  # Numpy Array (Anzahl Schichten, x,y)
+    #visualisierung(patient_dicom, patient_pixels)
 
