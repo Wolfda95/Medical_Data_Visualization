@@ -13,15 +13,16 @@ def pytorch(path):
 
 def pytorch_name(path, name):
     tensor = torch.load(path)
-
+    hold = 0
     img = tensor[name]
     print(img.shape)
+    print(type(img))
 
     #id = tensor["info"]
     #print(id)
 
-    classe = tensor["class"]
-    print(classe)
+    #classe = tensor["class"]
+    #print(classe)
 
     img = img.permute(0, 2, 1)
     width = img.shape[1]
@@ -30,7 +31,7 @@ def pytorch_name(path, name):
     view_batch(img, width=width, height=hight)
 
 
-def pytorch_mask(path, name_img, name_mask):
+def pytorch_mask(path, name_img, name_mask, D):
     tensor = torch.load(path)
 
     img = tensor[name_img]
@@ -38,14 +39,19 @@ def pytorch_mask(path, name_img, name_mask):
     print(img.shape)
     print(mask.shape)
 
-    img = img.permute(0, 2, 1)
-    mask = mask.permute(0, 2, 1) #mask = mask.transpose(0, 2, 1)
-    print(img.shape)
-    print(mask.shape)
+    if D == True:
+        img = img.permute(0, 2, 1)
+        mask = mask.permute(0, 2, 1) #mask = mask.transpose(0, 2, 1)
+        print(img.shape)
+        print(mask.shape)
+        width = img.shape[1]
+        hight = img.shape[2]
+        view_batch(img, mask, width=width, height=hight)
 
-    width = img.shape[1]
-    hight = img.shape[2]
-    view_batch(img, mask, width=width, height=hight)
+    if D == False:
+        width = img.shape[0]
+        hight = img.shape[1]
+        view_batch(img, mask, width=width, height=hight)
 
 def pytorch_mask_two(serie, mask):
     tensor_serie = torch.tensor(torch.load(serie))

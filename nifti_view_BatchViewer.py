@@ -59,6 +59,7 @@ def nifti_ct(path, body_part):
     print(nifti.header)
 
     img = img.transpose(2, 0, 1) # Anzahl Schichten muss im BatchVwer vorne Stehen (Anzahl Schichten,x,y)
+    print(img.shape)
     width = img.shape[1]
     hight = img.shape[2]
     view_batch(img, width=width, height=hight)
@@ -89,7 +90,7 @@ def nifti_ct_mask(ct, body_part, mask):
 
     nifti_ct = nib.load(ct)
     img_ct = nifti_ct.get_fdata()  # Numpy Array (x,y, Anzahl Schichten)
-    img_ct = win_scale(img_ct, wl, ww, type(img_ct), [img_ct.min(), img_ct.max()])  # Numpy Array Korrigiert
+    #img_ct = win_scale(img_ct, wl, ww, type(img_ct), [img_ct.min(), img_ct.max()])  # Numpy Array Korrigiert
     img_ct = img_ct.transpose(2, 0, 1) # Anzahl Schichten muss im BatchVwer vorne Stehen (Anzahl Schichten,x,y)
     print(nifti_ct.header)
 
@@ -138,7 +139,7 @@ def nifti_volume(mask, image):
     # Nifti Mask
     nifti_mask = nib.load(mask)
     mask = nifti_mask.get_fdata() # Numpy Array (x,y, Anzahl Schichten)
-    mask = mask.transpose(2, 0, 1)  # Anzahl Schichten muss orne Stehen (Anzahl Schichten,x,y)
+    mask = mask.transpose(2, 0, 1)  # Anzahl Schichten muss vorne Stehen (Anzahl Schichten,x,y)
     print(mask.shape)
 
     # Dicom Bild (brauche nur den Header)
@@ -154,7 +155,7 @@ def nifti_volume(mask, image):
 
     # Smoothing
     #https://docs.scipy.org/doc/scipy/reference/reference/generated/scipy.ndimage.gaussian_filter.html#scipy.ndimage.gaussian_filter
-    new_mask = scipy.ndimage.gaussian_filter(new_mask, sigma=[1,1,1], order=0, output=None, mode='reflect', cval=0.0, truncate=4.0)
+    #new_mask = scipy.ndimage.gaussian_filter(new_mask, sigma=[1,1,1], order=0, output=None, mode='reflect', cval=0.0, truncate=4.0)
 
     # Was komisches
     p = new_mask.transpose(2, 1, 0)

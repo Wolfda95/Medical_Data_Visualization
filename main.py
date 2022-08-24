@@ -35,7 +35,7 @@ def main():
     # ----------------------------- DICOM CT BatchViwer ------------------------------------------------
     # (CT_Pfad, Körperteil)
     # Körperteil: abdomen, angio, bon, brain, chest, lungs
-    # Todo: run_ct("/home/wolfda/Clinic_Data/Test/CT-XRAY/0000228102/4237660/7", "abdomen")
+    # Todo: run_ct("/home/wolfda/Clinic_Data/Challenge/CT_PreTrain/LIDC/manifest-1600709154662/LIDC-IDRI/LIDC-IDRI-0001/01-01-2000-NA-NA-30178/3000566.000000-NA-03192", "lungs")
 
     # ----------------------------- DICOM CT BatchViwer + Resize to [48,256,256] --------------------------------------
     # (CT_Pfad, Körperteil)
@@ -70,12 +70,12 @@ def main():
     # ----------------------------- Nifti CT BatchViwer------------------------------------------------
     # (CT_Pfad, Körperteil)
     # Körperteil: abdomen, angio, bon, brain, chest, lungs
-    # Todo: nifti_ct("/home/wolfda/Clinic_Data/Challenge/Challenge_COVID-19-20_v2/Train/volume-covid19-A-0003_ct.nii.gz", "lungs")
+    # Todo: nifti_ct("/home/wolfda/Clinic_Data/Challenge/CT_PreTrain/Downstream/ribfrac-train-images-1/Part1/RibFrac1-image.nii.gz", "chest")
 
     # ----------------------------- Nifti CT BatchViwer + Maske------------------------------------------------
     # (CT_Pfad, Körperteil, Maske_Pfad)
-    # Körperteil: abdomen, angio, bon, brain, chest, lungs
-    # Todo: nifti_ct_mask("/home/wolfda/Clinic_Data/Challenge/Challenge_COVID-19-20_v2/Train/volume-covid19-A-0003_ct.nii.gz", "lungs", "/home/wolfda/Clinic_Data/Challenge/Challenge_COVID-19-20_v2/Train/volume-covid19-A-0003_seg.nii.gz")
+    # Körperteil: abdomen, angio, bone, brain, chest, lungs
+    # Todo: nifti_ct_mask("/home/wolfda/Clinic_Data/Challenge/CT_PreTrain/Downstream/ribfrac-train-images-1/Part1/RibFrac2-image.nii.gz", "bone", "/home/wolfda/Clinic_Data/Challenge/CT_PreTrain/Downstream/ribfrac-train-labels-1/Part1/RibFrac2-label.nii.gz")
 
     # ----------------------------- Nifti MRT BatchViwer ------------------------------------------------
     # Todo: nifti_mrt("/home/wolfda/PycharmProjects/Cathrina/attention_maps/_model.features.transition3.conv/attention_map_0_0_0.nii.gz")
@@ -86,25 +86,27 @@ def main():
 
     # ----------------------------- Nifti 3d Volume------------------------------------------------
     #(Nifti Maske, Dicom Bild)
-    # Todo: nifti_volume("/home/wolfda/Clinic_Data/Data/Sarkome_Catharina/3D Volume/1mm/R1.uint16.nii.gz", "/home/wolfda/Clinic_Data/Data/Sarkome_Catharina/3D Volume/1mm/3/000001_1.3.12.2.1107.5.1.4.96208.30000019111307071679700001478.dcm")
+    nifti_volume("/media/wolfda/HDD/Sarkome_Catharina/3D Volume/1mm/R1.uint16.nii.gz", "/media/wolfda/HDD/Sarkome_Catharina/3D Volume/1mm/3/000001_1.3.12.2.1107.5.1.4.96208.30000019111307071679700001478.dcm")
 
     ########################################## BatchViewer Pytorch Tensor #############################################
     # ----------------------------- Pytorch BatchViwer  ------------------------------------------------
     # (pytorch_path)
     # name: torch.save(image)
-    # Todo:  pytorch("/home/wolfda/PycharmProjects/clinic-project-tracking/helper/mask.pt")
+    # Todo:  pytorch("/home/wolfda/Clinic_Data/Challenge/CT_PreTrain/Challenge_COVID-19-20_v2/Output/5.pt")
 
 
     # ----------------------------- Pytorch BatchViwer (File in liste) ------------------------------------------------
     # (pytorch_path, name)
     # name: torch.save("vol": image, "id": ...) -> name = "vol"
-    pytorch_name("/home/wolfda/Clinic_Data/Data/Covid_Concern/Klassen/2D_cut_mean_3/train/0000100850_3_23.pt", "vol")
+    # Todo: pytorch_name("/home/wolfda/Clinic_Data/Challenge/CT_PreTrain/CT_Brain_Cq500_Qureai_Dome/CQ500/CQ500_CT_367.pt", "vol")
 
 
     # ----------------------------- Pytorch BatchViwer + Maske (Bild und Maske in einer Liste) ------------------------------------------------
     # (pytorch_path, name_img, name_mask)
     # name: torch.save("vol": image, "mask": Maske)
-    # Todo: pytorch_mask("/home/wolfda/Clinic_Data/Data/Sarkome_Catharina/Data/Segmentierung/DenseNet_NurMarc/Test1/Test/0008195904_139_Remission.pt", "vol", "seg")
+    # 3D: True 2D: False
+    D = False
+    #pytorch_mask("/home/wolfda/Clinic_Data/Challenge/CT_PreTrain/Challenge_COVID-19-20_v2/Train_2D_slices/0_93.pt", "vol", "mask", D)
 
     # ----------------------------- Pytorch BatchViwer + Maske (Bild und Makse in 2 getrennten files)------------------------------------------------
     # (pytorch_image_path, pytorch_roi_path)
