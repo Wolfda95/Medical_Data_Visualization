@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import os
 import numpy as np
 import torch
+import PIL
 import nibabel as nib #NIFTI Images (.nii)
 
 
@@ -82,6 +83,15 @@ def overlay_dicom_pytorch(img, mask, schicht):
 
     images(mask, patient_pixels, schicht)
     visualisierung_mask(patient_pixels, np.transpose(mask, (0, 2, 1)))
+
+def overlay_png(img, mask):
+    img = PIL.Image.open(img)
+    img = np.array(img)
+    mask = PIL.Image.open(mask)
+    mask = np.array(mask)
+    plt.imshow(mask, cmap='jet', )
+    plt.imshow(img, cmap='gray', alpha=0.5)
+    plt.show()
 
 # def overlay_dicom_nifti(img, mask, schicht):
 #

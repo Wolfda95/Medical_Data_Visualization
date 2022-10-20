@@ -1,4 +1,5 @@
 # Batchviwer aus Git Herunterladen: https://github.com/FabianIsensee/BatchViewer und Anleitung in Readme durchführen
+# (1. Clonen || 2. conda activate <das Environment wo man den haben will> || 3. cd in Ordner wo der liegt || 4. pip install --upgrade .Nrrd)
 # Batchviewer Info: Im Bild scrollen: nur jede zweite Schicht | Neben Bild scrollen: jede Schicht
 
 from dicom_view_BatchViewer import run_ct
@@ -26,6 +27,7 @@ from dicom_header import header
 from dicom_nifti import dicom_to_nifti
 
 from overlay import overlay_dicom_pytorch
+from overlay import overlay_png
 
 def main():
     # Eine der blauen Zeilen einkommentieren (jenachdem was man ausgeben will)
@@ -35,7 +37,7 @@ def main():
     # ----------------------------- DICOM CT BatchViwer ------------------------------------------------
     # (CT_Pfad, Körperteil)
     # Körperteil: abdomen, angio, bon, brain, chest, lungs
-    # Todo: run_ct("/home/wolfda/Clinic_Data/Challenge/CT_PreTrain/LIDC/manifest-1600709154662/LIDC-IDRI/LIDC-IDRI-0001/01-01-2000-NA-NA-30178/3000566.000000-NA-03192", "lungs")
+    #run_ct("/home/wolfda/Data/Test Data/3000566.000000-NA-03192", "lungs")
 
     # ----------------------------- DICOM CT BatchViwer + Resize to [48,256,256] --------------------------------------
     # (CT_Pfad, Körperteil)
@@ -70,12 +72,12 @@ def main():
     # ----------------------------- Nifti CT BatchViwer------------------------------------------------
     # (CT_Pfad, Körperteil)
     # Körperteil: abdomen, angio, bon, brain, chest, lungs
-    # Todo: nifti_ct("/home/wolfda/Clinic_Data/Challenge/CT_PreTrain/Downstream/ribfrac-train-images-1/Part1/RibFrac1-image.nii.gz", "chest")
+    #nifti_ct("/home/wolfda/Data/Medical_Dcathlon/CT/Nifti_Data/Task03_Liver/imagesTr/liver_0.nii.gz", "chest")
 
     # ----------------------------- Nifti CT BatchViwer + Maske------------------------------------------------
     # (CT_Pfad, Körperteil, Maske_Pfad)
     # Körperteil: abdomen, angio, bone, brain, chest, lungs
-    # Todo: nifti_ct_mask("/home/wolfda/Clinic_Data/Challenge/CT_PreTrain/Downstream/ribfrac-train-images-1/Part1/RibFrac2-image.nii.gz", "bone", "/home/wolfda/Clinic_Data/Challenge/CT_PreTrain/Downstream/ribfrac-train-labels-1/Part1/RibFrac2-label.nii.gz")
+    #nifti_ct_mask("/home/wolfda/Data/Medical_Dcathlon/CT/Nifti_Data/Task03_Liver/imagesTr/liver_0.nii.gz", "lungs", "/home/wolfda/Data/Medical_Dcathlon/CT/Nifti_Data/Task03_Liver/labelsTr/liver_0.nii.gz")
 
     # ----------------------------- Nifti MRT BatchViwer ------------------------------------------------
     # Todo: nifti_mrt("/home/wolfda/PycharmProjects/Cathrina/attention_maps/_model.features.transition3.conv/attention_map_0_0_0.nii.gz")
@@ -86,7 +88,7 @@ def main():
 
     # ----------------------------- Nifti 3d Volume------------------------------------------------
     #(Nifti Maske, Dicom Bild)
-    nifti_volume("/media/wolfda/HDD/Sarkome_Catharina/3D Volume/1mm/R1.uint16.nii.gz", "/media/wolfda/HDD/Sarkome_Catharina/3D Volume/1mm/3/000001_1.3.12.2.1107.5.1.4.96208.30000019111307071679700001478.dcm")
+    # Todo:  nifti_volume("/media/wolfda/HDD/Sarkome_Catharina/3D Volume/1mm/R1.uint16.nii.gz", "/media/wolfda/HDD/Sarkome_Catharina/3D Volume/1mm/3/000001_1.3.12.2.1107.5.1.4.96208.30000019111307071679700001478.dcm")
 
     ########################################## BatchViewer Pytorch Tensor #############################################
     # ----------------------------- Pytorch BatchViwer  ------------------------------------------------
@@ -135,6 +137,10 @@ def main():
     # ----------------------------- DICOM Bild PyTorch Mask ------------------------------------------------
     # (Bild: dicom_path, Mask: pythorch path, Schicht)
     # Todo: overlay_dicom_pytorch("/home/wolfda/Clinic_Data/Data/Leber/Backup/0000100441/3310375/0000100441gross", "/home/wolfda/Clinic_Data/Data/Leber/Backup/0000100441/3310375/mask.pt", 45)
+
+    # ----------------------------- png Bild + Mask ------------------------------------------------
+    # (Bild: png, Mask: png)
+    overlay_png("/home/wolfda/Data/Challenge_COVID-19-20_v2/Data/Segmentation/CT_png/volume-covid19-A-0003_103_lable_1.png", "/home/wolfda/Data/Challenge_COVID-19-20_v2/Data/Segmentation/Seg_png/volume-covid19-A-0003_103_lable_1.png")
 
 
 

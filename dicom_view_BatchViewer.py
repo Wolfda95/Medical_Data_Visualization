@@ -3,7 +3,7 @@ import os
 import numpy as np
 import torch
 
-from batchviewer import view_batch  # 3D Visualisierung (aus Git runtergeladen)
+from batchviewer import view_batch  # 3D Visualisierung
 
 import pydicom  # DICOM Images (.dicom)
 
