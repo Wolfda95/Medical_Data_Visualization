@@ -5,9 +5,9 @@ def pytorch(path):
     tensor = torch.load(path)
     print(tensor.shape)
 
-    #tensor = tensor.permute(0, 2, 1)
-    width = tensor.shape[1]
-    hight = tensor.shape[2]
+    tensor = tensor[0,0,...]
+    width = tensor.shape[0]
+    hight = tensor.shape[1]
 
     view_batch(tensor, width=width, height=hight)
 

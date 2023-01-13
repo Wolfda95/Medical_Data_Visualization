@@ -94,7 +94,7 @@ def main():
     # ----------------------------- Pytorch BatchViwer  ------------------------------------------------
     # (pytorch_path)
     # name: torch.save(image)
-    # Todo:  pytorch("/home/wolfda/Clinic_Data/Challenge/CT_PreTrain/Challenge_COVID-19-20_v2/Output/5.pt")
+    pytorch("/home/wolfda/Data/PreTrain_Lung/Test_sim/Resize/volume-covid19-A-0003_49_lable_1.pt")
 
 
     # ----------------------------- Pytorch BatchViwer (File in liste) ------------------------------------------------
@@ -140,7 +140,7 @@ def main():
 
     # ----------------------------- png Bild + Mask ------------------------------------------------
     # (Bild: png, Mask: png)
-    overlay_png("/home/wolfda/Data/Challenge_COVID-19-20_v2/Data/Segmentation/CT_png/volume-covid19-A-0003_103_lable_1.png", "/home/wolfda/Data/Challenge_COVID-19-20_v2/Data/Segmentation/Seg_png/volume-covid19-A-0003_103_lable_1.png")
+    # Todo: overlay_png("/home/wolfda/Data/Challenge_COVID-19-20_v2/Data/Segmentation/CT_png/volume-covid19-A-0003_103_lable_1.png", "/home/wolfda/Data/Challenge_COVID-19-20_v2/Data/Segmentation/Seg_png/volume-covid19-A-0003_103_lable_1.png")
 
 
 
