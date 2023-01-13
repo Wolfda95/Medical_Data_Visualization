@@ -6,6 +6,7 @@ import numpy as np
 # Höher der Bars (=Ergbnisse)
 hight = [59.64
 ,62.76
+, 71.414
 , 71.034
 , 79.31
 , 72.892
@@ -13,17 +14,18 @@ hight = [59.64
 ]
 
 # Namen der Bars
-names = ['Scratch', 'All', 'HashAll', 'Hash', 'SSIM', 'Mutal' ]
+names = ['Scratch', 'All', "Every-n", 'HashAll', 'Hash', 'SSIM', 'Mutal' ]
 x_pos = np.arange(len(names))
 
 #plt.figure(figsize = [5.4, 4.8]) # Default:  [6.4, 4.8]
 
 # Breite der Bars
-width = [0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+width = [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
 
 # Error bars
 yer = [03.4022786
-, 10.0334956
+, 6.0334956
+, 2.27
 , 3.2078373
 , 01.9918584
 , 2.4351413,
@@ -39,7 +41,7 @@ plt.ylabel('Accuracy in %')
 plt.title('PreTrain with AutoPET Dataset')
 
 # Plot: bars, bars label, x labels
-rects = plt.bar(x_pos, hight, width= width, color=['gray', 'gray', 'darkorange', 'darkorange', 'darkorange', 'darkorange'], yerr=yer, capsize=7)
+rects = plt.bar(x_pos, hight, width= width, color=['gray', 'gray', "orange", 'darkorange', 'darkorange', 'darkorange', 'darkorange'], yerr=yer, capsize=7)
 #plt.bar_label(rects, padding=3)
 plt.xticks(x_pos, names)
 
@@ -54,6 +56,7 @@ plt.show()
 # Höher der Bars (=Ergbnisse)
 hight = [67.81
 , 72.66
+, 79.524
 , 78.73
 , 83.18
 , 79.92
@@ -61,20 +64,20 @@ hight = [67.81
 ]
 
 # Namen der Bars
-names = ['Scratch', 'All', 'HashAll', 'Hash', 'SSIM', 'Mutal' ]
+names = ['Scratch', 'All', "Every-n", 'HashAll', 'Hash', 'SSIM', 'Mutal' ]
 x_pos = np.arange(len(names))
 
 # Breite der Bars
-width = [0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+width = [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
 
 # Error bars
 yer = [03.7779756
 
 , 1.28831021
-
+, 2.29
 , 02.7996047
 
-, 4.7578462
+, 2.7578462
 
 , 01.5231262
 
@@ -91,7 +94,7 @@ plt.ylabel('AUC in %')
 plt.title('PreTrain with AutoPET Dataset')
 
 # Plot: bars, bars label, x labels
-rects = plt.bar(x_pos, hight, width= width,  color=['gray', 'gray', 'darkorange', 'darkorange', 'darkorange', 'darkorange'], yerr=yer, capsize=7,)
+rects = plt.bar(x_pos, hight, width= width,  color=['gray', 'gray', "orange", 'darkorange', 'darkorange', 'darkorange', 'darkorange'], yerr=yer, capsize=7,)
 #plt.bar_label(rects, padding=3)
 plt.xticks(x_pos, names)
 
@@ -107,7 +110,7 @@ plt.show()
 hight = [44.716
 
 , 53.45
-
+, 68.738
 , 69.2
 
 , 76.494
@@ -119,17 +122,17 @@ hight = [44.716
 ]
 
 # Namen der Bars
-names = ['Scratch', 'All', 'HashAll', 'Hash', 'SSIM', 'Mutal' ]
+names = ['Scratch', 'All', "Every-n", 'HashAll', 'Hash', 'SSIM', 'Mutal' ]
 x_pos = np.arange(len(names))
 
 # Breite der Bars
-width = [0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+width = [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
 
 # Error bars
-yer = [15.7393579
+yer = [7.7393579
 
 , 07.2989588
-
+, 1.424
 , 2.0662204
 
 , 2.4283575
@@ -149,7 +152,7 @@ plt.ylabel('F1 in %')
 plt.title('PreTrain with AutoPET Dataset')
 
 # Plot: bars, bars label, x labels
-rects = plt.bar(x_pos, hight, width= width, color=['gray', 'gray', 'darkorange', 'darkorange', 'darkorange', 'darkorange'], yerr=yer, capsize=7,)
+rects = plt.bar(x_pos, hight, width= width, color=['gray', 'gray', "orange", 'darkorange', 'darkorange', 'darkorange', 'darkorange'], yerr=yer, capsize=7,)
 #plt.bar_label(rects, padding=3)
 plt.xticks(x_pos, names)
 
@@ -166,6 +169,7 @@ plt.show()
 hight = [59.64
 
 , 68.126
+, 75.07
 , 78.842
 
 , 80.68
@@ -176,18 +180,18 @@ hight = [59.64
 ]
 
 # Namen der Bars
-names = ['Scratch', 'All', 'HashAll', 'Hash', 'SSIM', 'Mutal' ]
+names = ['Scratch', 'All', 'Every-n', 'HashAll', 'Hash', 'SSIM', 'Mutal' ]
 x_pos = np.arange(len(names))
 
 #plt.figure(figsize = [5.4, 4.8]) # Default:  [6.4, 4.8]
 
 # Breite der Bars
-width = [0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+width = [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
 
 # Error bars
 yer = [3.4022786
 , 05.8788111
-
+, 2.35
 
 
 , 01.8544472
@@ -213,7 +217,7 @@ plt.ylabel('Accuracy in %')
 plt.title('PreTrain with LIDC Dataset')
 
 # Plot: bars, bars label, x labels
-rects = plt.bar(x_pos, hight, width= width, color=['gray', 'gray', 'darkorange', 'darkorange', 'darkorange', 'darkorange'], yerr=yer, capsize=7)
+rects = plt.bar(x_pos, hight, width= width, color=['gray', 'gray', 'orange', 'darkorange', 'darkorange', 'darkorange', 'darkorange'], yerr=yer, capsize=7)
 #plt.bar_label(rects, padding=3)
 plt.xticks(x_pos, names)
 
@@ -229,7 +233,7 @@ plt.show()
 hight = [67.81
 
 , 73.428
-
+, 82.71
 
 
 , 86.762
@@ -251,11 +255,11 @@ hight = [67.81
 ]
 
 # Namen der Bars
-names = ['Scratch', 'All', 'HashAll', 'Hash', 'SSIM', 'Mutal' ]
+names = ['Scratch', 'All', "Every-n", 'HashAll', 'Hash', 'SSIM', 'Mutal' ]
 x_pos = np.arange(len(names))
 
 # Breite der Bars
-width = [0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+width = [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
 
 # Error bars
 yer = [3.7779756
@@ -264,7 +268,7 @@ yer = [3.7779756
 
 ,4.661986
 
-
+, 1.67
 ,1.7039797
 
 
@@ -287,7 +291,7 @@ plt.ylabel('AUC in %')
 plt.title('PreTrain with LIDC Dataset')
 
 # Plot: bars, bars label, x labels
-rects = plt.bar(x_pos, hight, width= width,  color=['gray', 'gray', 'darkorange', 'darkorange', 'darkorange', 'darkorange'], yerr=yer, capsize=7,)
+rects = plt.bar(x_pos, hight, width= width,  color=['gray', 'gray', "orange", 'darkorange', 'darkorange', 'darkorange', 'darkorange'], yerr=yer, capsize=7,)
 #plt.bar_label(rects, padding=3)
 plt.xticks(x_pos, names)
 
@@ -305,7 +309,7 @@ hight = [
 
 , 60.91
 
-
+, 73.988
 
 , 76.608
 
@@ -324,17 +328,18 @@ hight = [
 ]
 
 # Namen der Bars
-names = ['Scratch', 'All', 'HashAll', 'Hash', 'SSIM', 'Mutal' ]
+names = ['Scratch', 'All', "Every-n", 'HashAll', 'Hash', 'SSIM', 'Mutal' ]
 x_pos = np.arange(len(names))
 
 # Breite der Bars
-width = [0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+width = [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
 
 # Error bars
-yer = [15.7393579
+yer = [7.7393579
 
 
 ,7.1802716
+, 2.662
 
 , 02.2906797
 
@@ -359,7 +364,7 @@ plt.ylabel('F1 in %')
 plt.title('PreTrain with LIDC Dataset')
 
 # Plot: bars, bars label, x labels
-rects = plt.bar(x_pos, hight, width= width, color=['gray', 'gray', 'darkorange', 'darkorange', 'darkorange', 'darkorange'], yerr=yer, capsize=7,)
+rects = plt.bar(x_pos, hight, width= width, color=['gray', 'gray', "orange", 'darkorange', 'darkorange', 'darkorange', 'darkorange'], yerr=yer, capsize=7,)
 #plt.bar_label(rects, padding=3)
 plt.xticks(x_pos, names)
 
