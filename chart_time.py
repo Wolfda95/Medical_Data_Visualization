@@ -6,18 +6,17 @@ import numpy as np
 # Höher der Bars (=Ergbnisse)
 hight = [0
 , 538
-, 57
 , 57, 62, 204
 ]
 
 # Namen der Bars
-names = ['Scratch', 'All',"Every-n", 'Hash', 'SSIM', "Muatl"]
+names = ['Scratch', 'All', 'Hash', 'SSIM', "Muatl"]
 x_pos = np.arange(len(names))
 
 #plt.figure(figsize = [5.4, 4.8]) # Default:  [6.4, 4.8]
 
 # Breite der Bars
-width = [0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+width = [0.5, 0.5, 0.5, 0.5, 0.5,]
 
 
 # x-Achse
@@ -29,7 +28,7 @@ plt.ylabel('Time in Hour')
 plt.title('AutoPET')
 
 # Plot: bars, bars label, x labels
-rects = plt.bar(x_pos, hight, width= width, color=['gray', 'gray', "orange", 'darkorange', 'darkorange', 'darkorange'], capsize=7)
+rects = plt.bar(x_pos, hight, width= width, color=['gray', 'gray','darkorange', 'darkorange', 'darkorange'], capsize=7)
 plt.bar_label(rects, padding=3)
 plt.xticks(x_pos, names)
 
@@ -44,18 +43,17 @@ plt.show()
 # Höher der Bars (=Ergbnisse)
 hight = [0, 280
 , 27
-, 27
 , 34, 194
 ]
 
 # Namen der Bars
-names = ['Scratch', 'All',"Every-n", 'Hash', 'SSIM', "Muatl"]
+names = ['Scratch', 'All', 'Hash', 'SSIM', "Muatl"]
 x_pos = np.arange(len(names))
 
 #plt.figure(figsize = [5.4, 4.8]) # Default:  [6.4, 4.8]
 
 # Breite der Bars
-width = [0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+width = [0.5, 0.5, 0.5, 0.5, 0.5]
 
 
 # x-Achse
@@ -67,7 +65,7 @@ plt.ylabel('Time in Hour')
 plt.title('LIDC')
 
 # Plot: bars, bars label, x labels
-rects = plt.bar(x_pos, hight, width= width, color=['gray', 'gray', "orange", 'darkorange', 'darkorange', 'darkorange'], capsize=7)
+rects = plt.bar(x_pos, hight, width= width, color=['gray', 'gray', 'darkorange', 'darkorange', 'darkorange'], capsize=7)
 plt.bar_label(rects, padding=3)
 plt.xticks(x_pos, names)
 
@@ -80,20 +78,20 @@ plt.show()
 ######################################################################################################################
 # Similarity AutoPET
 # Höher der Bars (=Ergbnisse)
-hight = [0, 0.4
+hight = [0
 , 20
 , 240
 , 14400
 ]
 
 # Namen der Bars
-names = ['All',"Every-n", 'Hash', 'SSIM', "Muatl"]
+names = ['All','Hash', 'SSIM', "Muatl"]
 x_pos = np.arange(len(names))
 
 #plt.figure(figsize = [5.4, 4.8]) # Default:  [6.4, 4.8]
 
 # Breite der Bars
-width = [0.5, 0.5, 0.5, 0.5, 0.5]
+width = [0.5, 0.5, 0.5, 0.5]
 
 
 # x-Achse
@@ -105,7 +103,7 @@ plt.ylabel('Time in minutes')
 plt.title('AutoPET')
 
 # Plot: bars, bars label, x labels
-rects = plt.bar(x_pos, hight, width= width, color=['gray', "orange", 'darkorange', 'darkorange', 'darkorange'], capsize=7)
+rects = plt.bar(x_pos, hight, width= width, color=['gray', 'darkorange', 'darkorange', 'darkorange'], capsize=7)
 plt.bar_label(rects, padding=3)
 plt.xticks(x_pos, names)
 
@@ -119,20 +117,20 @@ plt.show()
 ######################################################################################################################
 # Similarity LIDC
 # Höher der Bars (=Ergbnisse)
-hight = [0, 0.1
+hight = [0
 , 10
 , 120
 , 360
 ]
 
 # Namen der Bars
-names = ['All',"Every-n", 'Hash', 'SSIM', "Muatl"]
+names = ['All', 'Hash', 'SSIM', "Muatl"]
 x_pos = np.arange(len(names))
 
 #plt.figure(figsize = [5.4, 4.8]) # Default:  [6.4, 4.8]
 
 # Breite der Bars
-width = [0.5, 0.5, 0.5, 0.5, 0.5]
+width = [0.5, 0.5, 0.5, 0.5]
 
 
 # x-Achse
@@ -144,7 +142,7 @@ plt.ylabel('Time in minutes')
 plt.title('LIDC')
 
 # Plot: bars, bars label, x labels
-rects = plt.bar(x_pos, hight, width= width, color=['gray', "orange", 'darkorange', 'darkorange', 'darkorange'], capsize=7)
+rects = plt.bar(x_pos, hight, width= width, color=['gray', 'darkorange', 'darkorange', 'darkorange'], capsize=7)
 plt.bar_label(rects, padding=3)
 plt.xticks(x_pos, names)
 
