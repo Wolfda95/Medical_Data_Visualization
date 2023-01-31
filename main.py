@@ -37,7 +37,7 @@ def main():
     # ----------------------------- DICOM CT BatchViwer ------------------------------------------------
     # (CT_Pfad, Körperteil)
     # Körperteil: abdomen, angio, bon, brain, chest, lungs
-    #run_ct("/home/wolfda/Data/Test Data/3000566.000000-NA-03192", "lungs")
+    # Todo: run_ct("//media/wolfda/RAD_KI_1/Weig_CLL_9_2022/0000240614/Befundverlauf 1/0/Follow-Up 1/1.2.840.113704.1.111.10156.1531389867.12", "lungs")
 
     # ----------------------------- DICOM CT BatchViwer + Resize to [48,256,256] --------------------------------------
     # (CT_Pfad, Körperteil)
@@ -94,7 +94,7 @@ def main():
     # ----------------------------- Pytorch BatchViwer  ------------------------------------------------
     # (pytorch_path)
     # name: torch.save(image)
-    pytorch("/home/wolfda/Data/PreTrain_Lung/Test_sim/Resize/volume-covid19-A-0003_49_lable_1.pt")
+    # Todo:  pytorch("/home/wolfda/Data/PreTrain_Lung/Test_sim/Resize/volume-covid19-A-0003_49_lable_1.pt")
 
 
     # ----------------------------- Pytorch BatchViwer (File in liste) ------------------------------------------------
@@ -118,7 +118,7 @@ def main():
     ########################################## DICOM Header ###########################################################
 
     # ----------------------------- DICOM Header ------------------------------------------------
-    #header("/home/wolfda/Clinic_Data/Data/Sarkome_Catharina/DICOM/Alle/Geheilt/0003077314/38625/2/000001_1.2.840.113704.1.111.2496.1470047016.89768.dcm")
+    # Todo: header("/hdd1/Public_Data/LIDC/manifest-1600709154662/LIDC-IDRI/LIDC-IDRI-0001/01-01-2000-NA-NA-30178/3000566.000000-NA-03192/1-001.dcm")
 
 
 
