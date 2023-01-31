@@ -154,7 +154,7 @@ hight = [59.64, 68.126, 69.28, 75.86, 75.88, 76.66
 ]
 
 # Namen der Bars
-names = ['Scratch', 'All',  'Everyn', 'Hash', 'SSIM', 'Mutal' ]
+names = ['Scratch', 'All',  'Everyn', 'Hash', 'SSIM', 'Mutual' ]
 x_pos = np.arange(len(names))
 
 #plt.figure(figsize = [5.4, 4.8]) # Default:  [6.4, 4.8]
@@ -194,7 +194,7 @@ hight = [67.81, 73.428, 73.808, 81.904, 84.284, 80.028
 ]
 
 # Namen der Bars
-names = ['Scratch', 'All',  'Everyn', 'Hash', 'SSIM', 'Mutal' ]
+names = ['Scratch', 'All',  'Everyn', 'Hash', 'SSIM', 'Mutual' ]
 x_pos = np.arange(len(names))
 
 # Breite der Bars
@@ -249,7 +249,7 @@ hight = [44.716
 ]
 
 # Namen der Bars
-names = ['Scratch', 'All',  'Everyn', 'Hash', 'SSIM', 'Mutal' ]
+names = ['Scratch', 'All',  'Everyn', 'Hash', 'SSIM', 'Mutual' ]
 x_pos = np.arange(len(names))
 
 # Breite der Bars
