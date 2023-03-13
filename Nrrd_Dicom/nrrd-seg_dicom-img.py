@@ -1,46 +1,17 @@
 import os
 import numpy as np
-import glob # Pfade einlesen
-import torch
-
-from batchviewer import view_batch  # 3D Visualisierung (aus Git runtergeladen)
 import matplotlib.pyplot as plt
-
+from batchviewer import view_batch  # 3D visualization (needs to be downloaded from Git)
 import pydicom  # DICOM Images (.dicom)
 import nrrd # Nrrd files
-
-
-def load_positions(path):
-    scan_high_dose = load_scan(path)
-    high_dose_positions = []
-    for i in range(len(scan_high_dose)):
-        high_dose_positions.append(scan_high_dose[i]["ImagePositionPatient"].value[2])
-
-    return high_dose_positions
-
-# Visualisierung (übereinander legen)
-def images(img, mask):
-    plt.figure(1)
-    plt.imshow(img, cmap="gray")
-    plt.imshow(mask, alpha=0.5, cmap="cubehelix")
-    #plt.savefig("/home/wolfda/Clinic_Data/Data/Sarkome_Catharina/Data/Segmentierung/Test" + "seg" + "/" + "_" + str(x) + "_" + str(i) +".png")
-    plt.show()
-    plt.close()
-
-    plt.figure(2)
-    plt.imshow(img, cmap="gray")
-    #plt.savefig("/home/wolfda/Clinic_Data/Data/Sarkome_Catharina/Data/Segmentierung/Text" + "img" + "/" + "_" + str(x) + "_" + str(i) +".png")
-    plt.show()
-    plt.close()
-
 
 
 # -------------------Load DICOM Image------------------------------
 def load_scan(path):
 
-    slices = [pydicom.dcmread(path + '/' + s) for s in os.listdir(path)] #holt alle DICOM Dateien aus dem Ordner
+    slices = [pydicom.dcmread(path + '/' + s) for s in os.listdir(path)] # Fetches all DICOM files from the folder
     slices = [s for s in slices if 'SliceLocation' in s]
-    slices.sort(key=lambda x: int(x.InstanceNumber)) #InstanceNumber sagt an welcher Stelle die DICOM Datei kommen muss
+    slices.sort(key=lambda x: int(x.InstanceNumber)) # InstanceNumber tells where the DICOM file must come from
     try:
         slice_thickness = np.abs(slices[0].ImagePositionPatient[2] -
                                  slices[1].ImagePositionPatient[2])
@@ -100,9 +71,35 @@ def min_max_normalization(data, eps):
 
     return data_normalized
 
-# ------------------- Visualisierung (mit Maske)--------------------------------------------
+# ------------------- Get Slice Number were the Segmentation starts from the NRRD file  ------------------------------
+def load_positions(path):
+    scan_high_dose = load_scan(path)
+    high_dose_positions = []
+    for i in range(len(scan_high_dose)):
+        high_dose_positions.append(scan_high_dose[i]["ImagePositionPatient"].value[2])
+
+    return high_dose_positions
+
+
+# ------------------- 2D visualization (overlay slice + segmentation) ------------------------------
+def images(img, mask):
+    plt.figure(1)
+    plt.imshow(img, cmap="gray")
+    plt.imshow(mask, alpha=0.5, cmap="cubehelix")
+    # plt.savefig("/home/wolfda/Clinic_Data/Data/Sarkome_Catharina/Data/Segmentierung/Test" + "seg" + "/" + "_" + str(x) + "_" + str(i) +".png")
+    plt.show()
+    plt.close()
+
+    plt.figure(2)
+    plt.imshow(img, cmap="gray")
+    # plt.savefig("/home/wolfda/Clinic_Data/Data/Sarkome_Catharina/Data/Segmentierung/Text" + "img" + "/" + "_" + str(x) + "_" + str(i) +".png")
+    plt.show()
+    plt.close()
+
+
+# ------------------- 3D visualization --------------------------------------------
 def visualisierung_mask(patient_pixels, img_mask):
-    #print(patient_dicom[1]) # DICOM Header der ersten Schicht
+    # print(patient_dicom[1]) # DICOM Header of the first slice
 
     patient_pixels = np.transpose(patient_pixels, (0, 2, 1))
     img_mask = np.transpose(img_mask, (0, 2, 1))
@@ -112,18 +109,17 @@ def visualisierung_mask(patient_pixels, img_mask):
 
 
 
+
 def main():
 
-    # ToDo: Data Folder (Sorted: path - patients - Serien - [DICOM + einzelen Segmentirungen])
     dicom = "/home/wolfda/Data/Cathi_Hoden/Test/Weig_CLL_9_2022/0000240614/Befundverlauf 1/0/Follow-Up 1/1.2.840.113704.1.111.10156.1531389867.6"
     nrrdx = "/home/wolfda/Data/Cathi_Hoden/Test/Weig_CLL_9_2022/0000240614/Befundverlauf 1/0/Follow-Up 1/1.2.840.113704.1.111.10156.1531389867.6_NT01 Milz_generic_primary_primary_3508914.nrrd"
 
 
     # Load DICOM
     patient_dicom = load_scan(dicom)
-    patient_pixels = get_pixels_hu(patient_dicom)  # Numpy Array (Anzahl Schichten, x,y)
+    patient_pixels = get_pixels_hu(patient_dicom)  # Numpy Array (Slices, x,y)
     #patient_pixels = win_scale(patient_pixels, wl, ww, type(patient_pixels), [patient_pixels.min(), patient_pixels.max()])  # Numpy Array Korrigiert
-    # patient_pixels = patient_pixels[::-1,...]  # läuft die Schichten von hinten durch, da irgendwie die Schichten umgedreht wurden
     patient_pixels = patient_pixels.astype(np.float32)
     # print(patient_pixels.shape)
 
@@ -136,7 +132,7 @@ def main():
     # Extract DICOM Tag "ImagePositionPatient" for all slices
     dicom = load_positions(dicom)
 
-    # Extract Nrrd Tag 'space origin' (hier startet das Volume der Nrrd Datei)
+    # Extract Nrrd Tag 'space origin' (the volume of the Nrrd file starts here)
     position_nrrd = header["space origin"][2]
     # round the number.
     position_nrrd = float(position_nrrd)
@@ -152,15 +148,15 @@ def main():
     cube = np.zeros(size)
     cube = np.flip(cube, 0)
 
-    # Anzahl Schichten Nrrd File
-    z = readdata.shape[0] - 1  # -1 da es mit Null startet
+    # Number of layers Nrrd File
+    z = readdata.shape[0] - 1  # -1 since it starts with zero
     # print("slice Number", slice_number)
     # print("slice Number - z", slice_number-z)
 
     # insert the nrrd array in the right place.
     for i in range(slice_number - z, slice_number + 1):
-        cube[i] = np.rot90(np.flipud(readdata[z]), 3)  # Schicht 8,7,6... [90 Grad gedreht]
-        images(patient_pixels[i], cube[i]) #Visualisieren
+        cube[i] = np.rot90(np.flipud(readdata[z]), 3)  # Schicht 8,7,6... [90 degree rotation]
+        images(patient_pixels[i], cube[i]) # 2D Visualization
         # print(i) #Schicht DICOM
         # print(z) #Schicht Cube
         z -= 1
@@ -168,7 +164,7 @@ def main():
     seg = cube
     img = patient_pixels
 
-    visualisierung_mask(img, seg)
+    visualisierung_mask(img, seg) # 3D Visualization
 
 
 if __name__ == '__main__':
