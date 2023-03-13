@@ -37,7 +37,7 @@ def main():
     # ----------------------------- DICOM CT BatchViwer ------------------------------------------------
     # (CT_Pfad, Körperteil)
     # Körperteil: abdomen, angio, bon, brain, chest, lungs
-    # Todo: run_ct("//media/wolfda/RAD_KI_1/Weig_CLL_9_2022/0000240614/Befundverlauf 1/0/Follow-Up 1/1.2.840.113704.1.111.10156.1531389867.12", "lungs")
+    run_ct("/hdd1/UKU_Data/Covid_Concern/Dicom/Covid_CT_Kloth/0000100850/3990756/3", "lungs")
 
     # ----------------------------- DICOM CT BatchViwer + Resize to [48,256,256] --------------------------------------
     # (CT_Pfad, Körperteil)
