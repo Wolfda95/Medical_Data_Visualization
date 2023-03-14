@@ -37,7 +37,7 @@ def main():
     # ----------------------------- DICOM CT BatchViwer ------------------------------------------------
     # (CT_Pfad, Körperteil)
     # Körperteil: abdomen, angio, bon, brain, chest, lungs
-    run_ct("/hdd1/UKU_Data/Covid_Concern/Dicom/Covid_CT_Kloth/0000100850/3990756/3", "lungs")
+    # Todo: run_ct("/hdd1/UKU_Data/Covid_Concern/Dicom/Covid_CT_Kloth/0000100850/3990756/3", "lungs")
 
     # ----------------------------- DICOM CT BatchViwer + Resize to [48,256,256] --------------------------------------
     # (CT_Pfad, Körperteil)
@@ -100,15 +100,15 @@ def main():
     # ----------------------------- Pytorch BatchViwer (File in liste) ------------------------------------------------
     # (pytorch_path, name)
     # name: torch.save("vol": image, "id": ...) -> name = "vol"
-    # Todo: pytorch_name("/home/wolfda/Clinic_Data/Challenge/CT_PreTrain/CT_Brain_Cq500_Qureai_Dome/CQ500/CQ500_CT_367.pt", "vol")
+    # ToDo: pytorch_name("/home/wolfda/Data/Cathi_Hoden/Test.pt", "vol")
 
 
     # ----------------------------- Pytorch BatchViwer + Maske (Bild und Maske in einer Liste) ------------------------------------------------
     # (pytorch_path, name_img, name_mask)
     # name: torch.save("vol": image, "mask": Maske)
     # 3D: True 2D: False
-    D = False
-    #pytorch_mask("/home/wolfda/Clinic_Data/Challenge/CT_PreTrain/Challenge_COVID-19-20_v2/Train_2D_slices/0_93.pt", "vol", "mask", D)
+    D = True
+    pytorch_mask("/home/wolfda/Data/Cathi_Hoden/Test.pt", "vol", "seg", D)
 
     # ----------------------------- Pytorch BatchViwer + Maske (Bild und Makse in 2 getrennten files)------------------------------------------------
     # (pytorch_image_path, pytorch_roi_path)

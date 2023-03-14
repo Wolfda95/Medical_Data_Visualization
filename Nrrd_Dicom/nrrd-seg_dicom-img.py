@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from batchviewer import view_batch  # 3D visualization (needs to be downloaded from Git)
 import pydicom  # DICOM Images (.dicom)
 import nrrd # Nrrd files
+import torch
 
 
 # -------------------Load DICOM Image------------------------------
@@ -165,6 +166,20 @@ def main():
     img = patient_pixels
 
     visualisierung_mask(img, seg) # 3D Visualization
+
+    # convert to float32
+    img = img.astype(np.float32)
+    seg = seg.astype(np.float32)
+
+    # Numpy -> Torch
+    img = torch.from_numpy(img)
+    img = img.to(torch.float16)
+    seg = torch.from_numpy(seg)
+    seg = seg.to(torch.float16)
+
+    # Speichern
+    path = "/home/wolfda/Data/Cathi_Hoden/Test.pt"
+    torch.save({"vol": img, "seg": seg, "class": "Rezidiv", "ID": "123"}, path)
 
 
 if __name__ == '__main__':
