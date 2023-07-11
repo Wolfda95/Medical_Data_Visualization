@@ -14,9 +14,13 @@ def pytorch(path):
 def pytorch_name(path, name):
     tensor = torch.load(path)
     hold = 0
+    print(tensor)
+
+
     img = tensor[name]
     print(img.shape)
     print(type(img))
+
 
     #id = tensor["info"]
     #print(id)

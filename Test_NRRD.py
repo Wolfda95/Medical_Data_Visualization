@@ -13,7 +13,7 @@ def min_max_normalization(data, eps):
     return data_normalized
 
 # Read the data back from file
-readdata, header = nrrd.read("//media/wolfda/RAD_KI_1/Weig_CLL_9_2022/0000240614/Befundverlauf 1/0/Follow-Up 1/1.2.840.113704.1.111.10156.1531389867.6_NT01 Milz_generic_primary_primary_3508914.nrrd")
+readdata, header = nrrd.read("//media/wolfda/Ashur Pro2/VC_Hoden_multi/0003027408/Befundverlauf 1/0/Baseline/1.2.840.113704.1.111.9840.1448875333.6_F01 lis_generic_primary_primary_3026345.nrrd")
 print(readdata.shape)
 print(header)
 

@@ -113,8 +113,8 @@ def visualisierung_mask(patient_pixels, img_mask):
 
 def main():
 
-    dicom = "/home/wolfda/Data/Cathi_Hoden/Test/Weig_CLL_9_2022/0000240614/Befundverlauf 1/0/Follow-Up 1/1.2.840.113704.1.111.10156.1531389867.6"
-    nrrdx = "/home/wolfda/Data/Cathi_Hoden/Test/Weig_CLL_9_2022/0000240614/Befundverlauf 1/0/Follow-Up 1/1.2.840.113704.1.111.10156.1531389867.6_NT01 Milz_generic_primary_primary_3508914.nrrd"
+    dicom = "/media/wolfda/Ashur Pro2/VC_Hoden_multi/0003027408/Befundverlauf 1/0/Baseline/1.2.840.113704.1.111.9840.1448875333.6"
+    nrrdx = "/media/wolfda/Ashur Pro2/VC_Hoden_multi/0003027408/Befundverlauf 1/0/Baseline/1.2.840.113704.1.111.9840.1448875333.6_F01 lis_generic_primary_primary_3026345.nrrd"
 
 
     # Load DICOM

@@ -101,6 +101,16 @@ def visualisierung_mask(patient_dicom, patient_pixels, img_mask):
     hight = patient_pixels.shape[2]
     view_batch(patient_pixels, img_mask, width=width, height=hight)
 
+
+# image normalization (for png/jepg)
+def interval_mapping(image, from_min, from_max, to_min, to_max):
+    # map values from [from_min, from_max] to [to_min, to_max]
+    # image: input array
+    from_range = from_max - from_min
+    to_range = to_max - to_min
+    scaled = np.array((image - from_min) / float(from_range), dtype=float)
+    return to_min + (scaled * to_range)
+
 #############################################################################################################
 
 # ------------------- DICOM CT BatchViwer --------------------------------------------
@@ -137,6 +147,7 @@ def run_ct (path, body_part):
     patient_pixels = get_pixels_hu(patient_dicom)  # Numpy Array (Anzahl Schichten, x,y)
     patient_pixels = win_scale(patient_pixels, wl, ww, type(patient_pixels), [patient_pixels.min(), patient_pixels.max()])  # Numpy Array Korrigiert
     patient_pixels = patient_pixels[::-1,...]  # läuft die Schichten von hinten durch, da irgendwie die Schichten umgedreht wurden
+    patient_pixels = interval_mapping(patient_pixels, patient_pixels.min(), patient_pixels.max(), 0, 255)
 
     print(patient_pixels.shape)
 
@@ -327,9 +338,10 @@ def run_mrt_dicom_mask (ct, mask):
 def run_xray (path):
 
     patient_dicom = pydicom.read_file(path)
+    print(patient_dicom)
     patient_pixels = patient_dicom.pixel_array
     print(patient_pixels.shape)
-    patient_pixels = np.transpose(patient_pixels, (1, 0))
+    # patient_pixels = np.transpose(patient_pixels, (1, 0))
     width = patient_pixels.shape[0]/3
     hight = patient_pixels.shape[1]/3
     view_batch(patient_pixels, width=width, height=hight)

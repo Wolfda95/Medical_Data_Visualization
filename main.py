@@ -37,7 +37,7 @@ def main():
     # ----------------------------- DICOM CT BatchViwer ------------------------------------------------
     # (CT_Pfad, Körperteil)
     # Körperteil: abdomen, angio, bon, brain, chest, lungs
-    # Todo: run_ct("/hdd1/UKU_Data/Covid_Concern/Dicom/Covid_CT_Kloth/0000100850/3990756/3", "lungs")
+    #run_ct("/home/wolfda/Data/Rebuttal/3D_Cathi_Brain/Test_Split/Mit_Blutung/0000230610/49997/5", "brain")
 
     # ----------------------------- DICOM CT BatchViwer + Resize to [48,256,256] --------------------------------------
     # (CT_Pfad, Körperteil)
@@ -64,7 +64,7 @@ def main():
     # Todo: run_mrt_dicom_mask('/home/wolfda/Clinic_Data/Data/Leber/Python_readin/0000100441/3310375/0000100441gross',"/home/wolfda/Clinic_Data/Data/Leber/Python_readin/0000100441/3310375/1222")
 
     # ----------------------------- DICOM X-Ray BatchViwer ------------------------------------------------
-    # Todo: run_xray('/home/wolfda/Clinic_Data/Test/CT-XRAY/0000228102/unknown/3/000001_1.2.840.113564.101384916.2021083116541470342.2203801020003.dcm')
+    # run_xray('/media/wolfda/Ashur Pro2/PacsExpo/0003007276/1077/1/000001_1.3.46.670589.14.7000.304.2.110898.20230710223420.2.0.dcm')
 
 
 ########################################## BatchViewer Nifti ######################################################
@@ -72,7 +72,7 @@ def main():
     # ----------------------------- Nifti CT BatchViwer------------------------------------------------
     # (CT_Pfad, Körperteil)
     # Körperteil: abdomen, angio, bon, brain, chest, lungs
-    #nifti_ct("/home/wolfda/Data/Medical_Dcathlon/CT/Nifti_Data/Task03_Liver/imagesTr/liver_0.nii.gz", "chest")
+    # Todo: nifti_ct("/hdd1/UKU_Data/PET Atlas/PET Atlas/Segmentierungen Lifex/0000109707_0000109707_N184315063_3/RoiVolume/KI-PET-Infektfokus-0000109707.nii.gz", "chest")
 
     # ----------------------------- Nifti CT BatchViwer + Maske------------------------------------------------
     # (CT_Pfad, Körperteil, Maske_Pfad)
@@ -100,7 +100,7 @@ def main():
     # ----------------------------- Pytorch BatchViwer (File in liste) ------------------------------------------------
     # (pytorch_path, name)
     # name: torch.save("vol": image, "id": ...) -> name = "vol"
-    # ToDo: pytorch_name("/home/wolfda/Data/Cathi_Hoden/Test.pt", "vol")
+    # ToDo: pytorch_name("/hdd1/UKU_Data/NewPC/Sarkome_Catharina/Data/Segmentierung/DenseNet_NurMarc/TestA/Test/0004292910_94_Rezidiv.pt", "vol")
 
 
     # ----------------------------- Pytorch BatchViwer + Maske (Bild und Maske in einer Liste) ------------------------------------------------
@@ -108,7 +108,7 @@ def main():
     # name: torch.save("vol": image, "mask": Maske)
     # 3D: True 2D: False
     D = True
-    pytorch_mask("/home/wolfda/Data/Cathi_Hoden/Test.pt", "vol", "seg", D)
+    # ToDo: pytorch_mask("/home/wolfda/Data/Cathi_Hoden/Test.pt", "vol", "seg", D)
 
     # ----------------------------- Pytorch BatchViwer + Maske (Bild und Makse in 2 getrennten files)------------------------------------------------
     # (pytorch_image_path, pytorch_roi_path)
