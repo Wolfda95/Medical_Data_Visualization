@@ -37,7 +37,7 @@ def main():
     # ----------------------------- DICOM CT BatchViwer ------------------------------------------------
     # (CT_Pfad, Körperteil)
     # Körperteil: abdomen, angio, bon, brain, chest, lungs
-    #run_ct("/home/wolfda/Data/Rebuttal/3D_Cathi_Brain/Test_Split/Mit_Blutung/0000230610/49997/5", "brain")
+    # Todo: run_ct("/media/wolfda/Ashur Pro2/Postata/3559196/6", "abdomen")
 
     # ----------------------------- DICOM CT BatchViwer + Resize to [48,256,256] --------------------------------------
     # (CT_Pfad, Körperteil)
@@ -50,7 +50,7 @@ def main():
     # Todo: run_ct_mask('/home/wolfda/Clinic_Data/Data/PET Atlas/PET Atlas/Conquest/0003554533/3756693/3', "chest", "/home/wolfda/Clinic_Data/Data/PET Atlas/PET Atlas/Segmentierungen Lifex/0003554533_0003554533_3756693_3/RoiVolume/KI-PET-Lymphknotenmetastase1-0003554533.nii.gz")
 
     # ----------------------------- DICOM MRT BatchViwer ------------------------------------------------
-    # Todo:  run_mrt('/home/wolfda/Clinic_Data/Test/Prostata/Lendle/0007884126/4178570/8')
+    # Todo: run_mrt("/media/wolfda/Ashur Pro2/Postata/2")
 
     # ----------------------------- DICOM MRT BatchViwer + resize to [48,256,256] -------------------------------------
     # Todo: run_mrt_resize('/home/wolfda/Clinic_Data/Test/Prostata_Mamma/0008046191/3865644/6')
@@ -72,7 +72,7 @@ def main():
     # ----------------------------- Nifti CT BatchViwer------------------------------------------------
     # (CT_Pfad, Körperteil)
     # Körperteil: abdomen, angio, bon, brain, chest, lungs
-    # Todo: nifti_ct("/hdd1/UKU_Data/PET Atlas/PET Atlas/Segmentierungen Lifex/0000109707_0000109707_N184315063_3/RoiVolume/KI-PET-Infektfokus-0000109707.nii.gz", "chest")
+    # ToDo nifti_ct("/home/wolfda/Downloads/3_pet_wb.nii.gz", "chest")
 
     # ----------------------------- Nifti CT BatchViwer + Maske------------------------------------------------
     # (CT_Pfad, Körperteil, Maske_Pfad)
@@ -112,13 +112,13 @@ def main():
 
     # ----------------------------- Pytorch BatchViwer + Maske (Bild und Makse in 2 getrennten files)------------------------------------------------
     # (pytorch_image_path, pytorch_roi_path)
-    # Todo: pytorch_mask_two("/home/wolfda/PycharmProjects/clinic-project-tracking/helper/serie.pt", "/home/wolfda/PycharmProjects/clinic-project-tracking/helper/mask.pt")
+    # ToDo: pytorch_mask_two("/home/wolfda/PycharmProjects/Medical_Data_Visualization/PACS_Export/serie.pt", "/home/wolfda/PycharmProjects/Medical_Data_Visualization/PACS_Export/mask.pt")
 
 
     ########################################## DICOM Header ###########################################################
 
     # ----------------------------- DICOM Header ------------------------------------------------
-    # Todo: header("/hdd1/Public_Data/LIDC/manifest-1600709154662/LIDC-IDRI/LIDC-IDRI-0001/01-01-2000-NA-NA-30178/3000566.000000-NA-03192/1-001.dcm")
+    # ToDo: header("/media/wolfda/Ashur Pro2/Postata/9/000001_1.2.40.0.13.1.118382429733479468796365153317596199821.dcm")
 
 
 
